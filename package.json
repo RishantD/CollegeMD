@@ -1,0 +1,30 @@
+{
+  "name": "collegemd",
+  "version": "1.0.0",
+  "description": "Web application to provide medical advice to college students by college students",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RishantD/CollegeMD.git"
+  },
+  "keywords": [
+    "collegemd"
+  ],
+  "author": "Rishant Dwivedi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RishantD/CollegeMD/issues"
+  },
+  "homepage": "https://github.com/RishantD/CollegeMD#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "express-validator": "^2.19.1",
+    "mongoose": "^4.4.5",
+    "morgan": "^1.7.0",
+    "superagent": "^1.7.2"
+  }
+}
