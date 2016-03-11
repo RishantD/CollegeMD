@@ -3,9 +3,9 @@ var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
 	createdAt: {type: Date, default: Date.now},
-	illness_hist: {type: String, required: true},
-	remedy_hist: {type: String, required: true},
-	fb_id: {type: String, required: true}
+	illnessHist: [],
+	remedyHist: [],
+	fbId: {type: String, required: true}
 });
 
 module.exports = mongoose.model('User', userSchema);
