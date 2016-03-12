@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var remedySchema = new Schema({
 	createdAt: {type: Date, default: Date.now},
 	cure: {type: String, required: true},
-	upvote: {type: Number, required: true}
+	upvote: {type: Number, required: true},
 	illness: {type: Number, required: true}
 });
 

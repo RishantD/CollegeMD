@@ -16,7 +16,7 @@ module.exports = {
 			if (err) {
 				return res.status(400).send({message: "Illness Not Added"});
 			} else {
-				return res.status(200).send({message: "Illness Added", illness: newIll});
+				return res.status(200).send({message: "Illness Added", data: newIll});
 			}
 		});
 	},
@@ -25,6 +25,17 @@ module.exports = {
 		var body = req.body;
 
 		Illness.find({name: body.name}, function( err, illness) {
+			if (err) {
+				return res.status(400).send({message: "Illness Not Found", data: []});
+			} else {
+				return res.status(200).send({message: "Illness Found", data: illness});
+			}
+		});
+	},
+	getIllnessBySymptoms:  function (req, res) {
+		var body = req.body;
+
+		Illness.find({ symptoms: { $eq: body.symptoms} }, function( err, illness) {
 			if (err) {
 				return res.status(400).send({message: "Illness Not Found", data: []});
 			} else {
