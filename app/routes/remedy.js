@@ -1,5 +1,5 @@
-var Remedy = require('../models/Remedy');
-var Illness = require('../models/Illness');
+var Remedy = require('../models/remedy.js');
+var Illness = require('../models/illness.js');
 
 module.exports = {
 	addRemedy: function (req, res) {

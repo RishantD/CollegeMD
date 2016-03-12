@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html ng-app="collegemd">
 <head>
-	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="main_controller.js"></script>
-  <script type="text/javascript" src="display_controller.js"></script>
+  	<script type="text/javascript" src="display_controller.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   	<title>CollegeMD</title>
 </head>
 <body>
+	
 	<div ng-controller="main_controller" style="color:blue">
   		<h1>CollegeMD</h1>
 
@@ -19,7 +23,7 @@
   	<h3>Search by Illness:</h3>
   </div>
   <input ng-model="illness" placeholder="Search by Illness" />
-  <button ng-click="searchIllness()">Search</button>
+  <button ng-click="searchIllness()" button type="button" class="btn btn-primary btn-sm">Search</button>
   
 
   <div>
@@ -28,36 +32,39 @@
 
 
   <form action="">
-	<input type="checkbox">Cough 
-	<input type="checkbox">Cold 
-	<input type="checkbox">Sore Throat 
-	<input type="checkbox">Fever 
-	<input type="checkbox">Headache 
+	<input type="checkbox"> Cough <br>
+	<input type="checkbox"> Cold <br>
+	<input type="checkbox"> Sore Throat <br>
+	<input type="checkbox"> Fever <br>
+	<input type="checkbox"> Headache <br>
   </form>
 
-  <button>Search</button>
+
+  <button type="button" class="btn btn-primary btn-sm">Search</button>
+  <br />
 
   <div>
   	<h3>Add an Illness:</h3>
   </div>
-  <input ng-model="new_illness" placeholder="Insert Illness" /> <button ng-click="addIllness()">Submit</button>
+
+  <input ng-model="new_illness" placeholder="Insert Illness" /> <button type="button" class="btn btn-primary btn-sm" ng-click="addIllness()">Submit</button>
   
-  <div ng-view></div>	
-  <div style = "display:none">
+<!--   <div ng-view></div>	
+  <div style = "display:none"> -->
 	  <div>
 	  	<h3>Add a Remedy:</h3>
 	  </div>
-	  <input placeholder="Insert Remedy" /> <button>Submit</button>
+	  <input placeholder="Insert Remedy" /> <button type="button" class="btn btn-primary btn-sm">Submit</button>
 
 	  <div>
 	  	<h4>Illness to remove:</h4>
 	  </div>
-	  <input placeholder="Remove this Illness" /> <button>Submit</button>
+	  <input placeholder="Remove this Illness" /> <button type="button" class="btn btn-primary btn-sm">Submit</button>
 	  	
 	  <div>
 	  	<h4>Remedy to remove:</h4>
 	  </div>
-	  <input placeholder="Remove this Remedy" /> <button>Submit</button>
+	  <input placeholder="Remove this Remedy" /> <button type="button" class="btn btn-primary btn-sm">Submit</button>
   <div>
 
 
