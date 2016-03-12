@@ -12,7 +12,6 @@ module.exports = {
 
 		newIllness.save(function(err, newIll){
 			//Adds the Illness to the database
-			console.log("Error" + err);
 			if (err) {
 				return res.status(400).send({message: "Illness Not Added"});
 			} else {
