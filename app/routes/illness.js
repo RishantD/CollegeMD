@@ -1,4 +1,4 @@
-var Illness = require('../models/Illness');
+var Illness = require('../models/illness.js');
 
 module.exports = {
 	addIllness: function (req, res) {
