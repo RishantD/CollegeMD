@@ -40,7 +40,7 @@
   <div>
   	<h3>Add an Illness:</h3>
   </div>
-  <input placeholder="Insert Illness" /> <button>Submit</button>
+  <input ng-model="new_illness" placeholder="Insert Illness" /> <button ng-click="addIllness()">Submit</button>
   
   <div ng-view></div>	
   <div style = "display:none">
