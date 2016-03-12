@@ -23,11 +23,10 @@ module.exports = {
 		//Gets the Illness for a particular search from the database
 		var body = req.body;
 
-		Illness.find({name: body.name}, function( err, illness) {
+		Illness.findOne({name: body.name}, function( err, illness) {
 			if (err) {
 				return res.status(400).send({message: "Illness Not Found", data: []});
 			} else {
-				console.log(body.name);
 				return res.status(200).send({message: "Illness Found", data: illness});
 			}
 		});

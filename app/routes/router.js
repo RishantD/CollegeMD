@@ -7,7 +7,7 @@ var Remedy = require('./remedy.js');
 module.exports = function(app){
 	
 	app.post('/api/Illness/create', Illness.addIllness),
-	app.get('/api/Illness/get', Illness.getIllness),
+	app.post('/api/Illness/get', Illness.getIllness),
 	app.post('/api/Illness/getBySymptoms', Illness.getIllnessBySymptoms),
 	app.post('/api/Illness/delete', Illness.deleteIllness),
 	app.post('/api/Remedy/add', Remedy.addRemedy),
