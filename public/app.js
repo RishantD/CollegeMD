@@ -6,8 +6,11 @@
 	$routeProvider.when('/', {
 			templateUrl: 'index.html',
 			controller: 'main_controller.js'
-		});	
-
+		}),
+	$routeProvider.when ('/search', {
+			templateUrl:'display.html',
+			controller: 'display_controller.js'
+	});
 
 	if(window.history && window.history.pushState){
     		$locationProvider.html5Mode(true);
