@@ -22,7 +22,7 @@ module.exports = {
 					if (err) {
 						return res.status(400).send({message: "Remedy Not Added"});
 					} else {
-						return res.status(200).send({message: "Remedy Added", remedy: newRem});
+						return res.status(200).send({message: "Remedy Added", data: newRem});
 					}
 				});
 			}
@@ -33,7 +33,7 @@ module.exports = {
 			if (err) {
 						return res.status(400).send({message: "Remedy Not Found"});
 					} else {
-						return res.status(200).send({message: "Remedy Updated", remedy: updateRem});
+						return res.status(200).send({message: "Remedy Updated", data: updateRem});
 					}
 		});
 	},
@@ -45,7 +45,7 @@ module.exports = {
 			if (err) {
 				return res.status(400).send({message: "Remedies Not Found", data: []});
 			} else {
-				return res.status(200).send({message: "Remedies Found", remedies: remedies});
+				return res.status(200).send({message: "Remedies Found", data: remedies});
 			}
 		});
 	},
