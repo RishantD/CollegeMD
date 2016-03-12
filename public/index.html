@@ -6,6 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="main_controller.js"></script>
+  <script type="text/javascript" src="display_controller.js"></script>
   	<title>CollegeMD</title>
 </head>
 <body>
@@ -17,11 +18,12 @@
   <div>
   	<h3>Search by Illness:</h3>
   </div>
-  <input placeholder="Search by Illness" />
+  <input ng-model="illness" placeholder="Search by Illness" />
+  <button ng-click="searchIllness()">Search</button>
   
 
   <div>
-  	<h3>Check Symptoms Here:</h3>
+  	<h3>Search by Symptoms:</h3>
   </div>
 
 
@@ -32,7 +34,32 @@
 	<input type="checkbox">Fever 
 	<input type="checkbox">Headache 
   </form>
+
   <button>Search</button>
-  		
+
+  <div>
+  	<h3>Add an Illness:</h3>
+  </div>
+  <input placeholder="Insert Illness" /> <button>Submit</button>
+  
+  <div ng-view></div>	
+  <div style = "display:none">
+	  <div>
+	  	<h3>Add a Remedy:</h3>
+	  </div>
+	  <input placeholder="Insert Remedy" /> <button>Submit</button>
+
+	  <div>
+	  	<h4>Illness to remove:</h4>
+	  </div>
+	  <input placeholder="Remove this Illness" /> <button>Submit</button>
+	  	
+	  <div>
+	  	<h4>Remedy to remove:</h4>
+	  </div>
+	  <input placeholder="Remove this Remedy" /> <button>Submit</button>
+  <div>
+
+
 </body>
 </html>

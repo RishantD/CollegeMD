@@ -1,6 +1,6 @@
 (function() {
 	var app = angular.module('collegemd');
-	app.controller('main_controller', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
+	app.controller('display_controller', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
 		
 		$scope.illness = "";
 
@@ -11,5 +11,6 @@
   				data: $.param($scope.illness)
 			});
 		};
+		
 	}]);
 })();
