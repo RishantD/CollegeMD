@@ -4,8 +4,10 @@
 		
 		$scope.illness = '';
 		$scope.new_illness = '';
+		$scope.test = 'HIIII!';
 
 		$scope.searchIllness = function() {
+			alert("Worked!");
 			$http({
   				method: 'POST',
   				url: '/api/Illness/get',
