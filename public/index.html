@@ -25,7 +25,7 @@
   	  <div class="panel-body">
   		<input ng-model="illness" style = "width:300px" placeholder="Search by Illness" />
     		<button ng-click="searchIllness()" button type="button" class="btn btn-primary btn-sm">Search</button>
-    	   <h1><span ng-bind="new_illness.name"></span></h1>
+    	   <h1><span ng-bind="view_illness.name"></span></h1>
   	  </div>
   	</div>
 
@@ -52,7 +52,7 @@
   <div style = "padding-left:2%">  <button type="button" class="btn btn-primary btn-sm">Update Pre-existing Illness</button> </div>
 
 
-    <div style = "visibility:hidden">
+<!--     <div style = "visibility:hidden"> -->
 
     <div>
     	<h3>Add an Illness:</h3>
@@ -77,6 +77,6 @@
   	  <input placeholder="Remove this Remedy" /> <button type="button" class="btn btn-primary btn-sm">Submit</button>
     <div>
     </div>
-  </div>
+<!--   </div> -->
 </body>
 </html>
