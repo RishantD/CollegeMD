@@ -62,7 +62,10 @@
 				}
 			}
 
-			$http.post('api/Illness/update', {name: $scope.illness_update_symptoms, symptoms: $scope.update_symptoms}, config).then(function(response) {
+			var symp = [];
+			symp.push($scope.update_symptoms);
+
+			$http.post('api/Illness/update', {name: $scope.illness_update_symptoms, symptoms: symp}, config).then(function(response) {
 				$scope.illness_update_symptoms = response.data;
 				console.log($scope.illness_update_symptoms);
 			});
