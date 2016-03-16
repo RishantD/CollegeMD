@@ -3,7 +3,7 @@
 	app.controller('main_controller', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
 		
 		$scope.illness = '';
-		$scope.new_illness = 'Hello';
+		$scope.new_illness = {'name': "Hello"};
 		$scope.test = 'HIIII!';
 
 		$scope.searchIllness = function() {
