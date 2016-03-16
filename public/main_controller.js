@@ -19,16 +19,6 @@
 				$scope.view_illness = response.data;
 			});
 
-			// console.log('"name":' + '"' + $scope.illness + '"');
-			// $http({
-  	// 			method: 'POST',
-  	// 			url: '/api/Illness/get',
-  	// 			dataType: 'json',
-  	// 			headers: {
-  	// 				'Content-Type': 'application/json'
- 		// 		},
-  	// 			data: ('"name":' + '"' + $scope.illness + '"')
-			// });
 		};
 
 		$scope.addIllness = function() {
