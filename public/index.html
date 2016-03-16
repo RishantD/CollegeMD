@@ -61,7 +61,8 @@
     <div>
     	<h3>Add an Illness:</h3>
     </div>
-    <input ng-model="new_illness" placeholder="Insert Illness" /> <button type="button" class="btn btn-primary btn-sm" ng-click="addIllness()">Submit</button>
+    <input ng-model="new_illness" placeholder="Insert Illness" />
+    <input ng-model="new_symptoms" placeholder="Insert Symptoms for Illness" /> <button type="button" class="btn btn-primary btn-sm" ng-click="addIllness()">Submit</button>
     
   <!--   <div ng-view></div>	
     <div style = "display:none"> -->
@@ -73,7 +74,7 @@
   	  <div>
   	  	<h4>Illness to remove:</h4>
   	  </div>
-  	  <input placeholder="Remove this Illness" /> <button type="button" class="btn btn-primary btn-sm">Submit</button>
+  	  <input ng-model="delete_illness" placeholder="Remove this Illness" /> <button type="button" class="btn btn-primary btn-sm" ng-click="deleteIllness()">Submit</button>
   	  	
   	  <div>
   	  	<h4>Remedy to remove:</h4>
