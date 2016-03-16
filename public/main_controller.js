@@ -16,7 +16,7 @@
 			}
 
 			$http.post('api/Illness/get', {name: $scope.illness}, config).then(function(response) {
-				$scope.view_illness = response.data;
+				$scope.view_illness = response.data.data;
 			});
 
 		};
