@@ -4,15 +4,9 @@ module.exports = {
 	addIllness: function (req, res) {
 		var body = req.body;
 
-		symptomsUpper = [];
-
-		for (symp in body.symptoms) {
-			symptomsUpper.push(symp.toUpperCase());
-		}
-
 		var newIllness = new Illness({
 			name: body.name.toUpperCase(),
-			symptoms: symptomsUpper,
+			symptoms: body.symptoms,
 			createdAt: body.timestamp 
 		});
 
@@ -40,13 +34,7 @@ module.exports = {
 	getIllnessBySymptoms:  function (req, res) {
 		var body = req.body;
 
-		symptomsUpper = [];
-
-		for (symp in body.symptoms) {
-			symptomsUpper.push(symp.toUpperCase());
-		}
-
-		Illness.find({ symptoms: { $eq: symptomsUpper} }, function( err, illness) {
+		Illness.find({ symptoms: { $eq: body.symptoms} }, function( err, illness) {
 			if (err) {
 				return res.status(400).send({message: "Illness Not Found", data: []});
 			} else {
