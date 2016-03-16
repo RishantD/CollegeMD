@@ -6,8 +6,9 @@ module.exports = {
 
 		symptomsUpper = [];
 
-		for symp in body.symptoms:
+		for (symp in body.symptoms) {
 			symptomsUpper.push(symp.toUpperCase());
+		}
 
 		var newIllness = new Illness({
 			name: body.name.toUpperCase(),
@@ -41,8 +42,9 @@ module.exports = {
 
 		symptomsUpper = [];
 
-		for symp in body.symptoms:
+		for (symp in body.symptoms) {
 			symptomsUpper.push(symp.toUpperCase());
+		}
 
 		Illness.find({ symptoms: { $eq: symptomsUpper} }, function( err, illness) {
 			if (err) {
