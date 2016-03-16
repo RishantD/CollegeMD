@@ -8,6 +8,8 @@
 		$scope.test = 'HIIII!';
 		$scope.new_symptoms = {};
 		$scope.delete_illness = '';
+		$scope.update_symptoms = {};
+		$scope.illness_update_symptoms = '';
 
 		$scope.searchIllness = function() {
 
@@ -19,6 +21,7 @@
 
 			$http.post('api/Illness/get', {name: $scope.illness}, config).then(function(response) {
 				$scope.view_illness = response.data.data;
+				console.log($scope.view_illness);
 			});
 
 		};
@@ -50,6 +53,21 @@
 				console.log($scope.delete_illness);
 			});
 		};
+
+		$scope.updateIllness = function() {
+			console.log($scope.update_symptoms);
+			var config = {
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}
+
+			$http.post('api/Illness/update', {name: $scope.illness_update_symptoms, symptoms: $scope.update_symptoms}, config).then(function(response) {
+				$scope.illness_update_symptoms = response.data;
+				console.log($scope.illness_update_symptoms);
+			});
+
+		}
 
 	}]);
 })();

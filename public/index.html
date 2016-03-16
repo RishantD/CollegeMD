@@ -80,6 +80,13 @@
   	  	<h4>Remedy to remove:</h4>
   	  </div>
   	  <input placeholder="Remove this Remedy" /> <button type="button" class="btn btn-primary btn-sm">Submit</button>
+
+      <div>
+        <h4>Update Illness Symptoms:</h4>
+      </div>
+      <input ng-model="illness_update_symptoms" placeholder="Illness you want to update" />
+      <input ng-model="update_symptoms" placeholder="Type updated symptoms here" /> <button type="button" class="btn btn-primary btn-sm" ng-click="updateIllness()">Submit</button>
+
     <div>
     </div>
 <!--   </div> -->
