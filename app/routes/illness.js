@@ -4,9 +4,14 @@ module.exports = {
 	addIllness: function (req, res) {
 		var body = req.body;
 
+		symptomsUpper = [];
+
+		for symp in body.symptoms:
+			symptomsUpper.push(symp.toUpperCase());
+
 		var newIllness = new Illness({
-			name: body.name,
-			symptoms: body.symptoms,
+			name: body.name.toUpperCase(),
+			symptoms: symptomsUpper,
 			createdAt: body.timestamp 
 		});
 
@@ -23,7 +28,7 @@ module.exports = {
 		//Gets the Illness for a particular search from the database
 		var body = req.body;
 
-		Illness.findOne({name: body.name}, function( err, illness) {
+		Illness.findOne({name: body.name.toUpperCase()}, function( err, illness) {
 			if (err) {
 				return res.status(400).send({message: "Illness Not Found", data: []});
 			} else {
@@ -34,7 +39,12 @@ module.exports = {
 	getIllnessBySymptoms:  function (req, res) {
 		var body = req.body;
 
-		Illness.find({ symptoms: { $eq: body.symptoms} }, function( err, illness) {
+		symptomsUpper = [];
+
+		for symp in body.symptoms:
+			symptomsUpper.push(symp.toUpperCase());
+
+		Illness.find({ symptoms: { $eq: symptomsUpper} }, function( err, illness) {
 			if (err) {
 				return res.status(400).send({message: "Illness Not Found", data: []});
 			} else {
@@ -45,7 +55,7 @@ module.exports = {
 	deleteIllness: function(req, res) {
 		var body = req.body;
 
-		Illness.remove({name: body.name},function( err, response) {
+		Illness.remove({name: body.name.toUpperCase()},function( err, response) {
 			if (err) {
 				return res.status(400).send({message: "Illness Not Found"});
 			} else {
