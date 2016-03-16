@@ -20,7 +20,9 @@ module.exports = {
 		});
 	},
 	updateIllness: function(req, res) {
-		Illness.update({ name:body.name},{$set:{'symptoms':body.symptoms}}, function(err, updateIll) {
+		var body = req.body;
+		
+		Illness.update({ name:body.name.toUpperCase()},{$set:{'symptoms':body.symptoms}}, function(err, updateIll) {
 			if (err) {
 						return res.status(400).send({message: "Illness Not Found"});
 					} else {
