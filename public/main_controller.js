@@ -70,7 +70,23 @@
 				console.log($scope.illness_update_symptoms);
 			});
 
-		}
+		};
 
+
+		$("#displayAddR").click(function() {
+			$("#addR").toggle();
+		});
+		$("#displayAddI").click(function() {
+			$("#addI").toggle();
+		});
+		$("#displayRemoveR").click(function() {
+			$("#removeR").toggle();
+		});
+		$("#displayRemoveI").click(function() {
+			$("#removeI").toggle();
+		});
+		$("#displayUpdate").click(function() {
+			$("#update").toggle();
+		});
 	}]);
 })();

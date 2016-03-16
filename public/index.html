@@ -55,63 +55,65 @@
 
     <!-- Dropdown button menu for Adding Illness/Remedy -->
     <div class="btn-group">
-      <button type="button" class="btn btn-primary">Add</button>
       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="caret"></span>
-      <span class="sr-only">Toggle Dropdown</span>
+        Add <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a href="#">Illness</a></li>
-        <li><a href="#">Remedy</a></li>
+        <li><a id = "displayAddR">Illness</a></li>
+        <li><a id = "displayAddI">Remedy</a></li>
       </ul>
     </div>
 
     <!-- Dropdown button menu for editing existing stuff -->
     <div class="btn-group">
-      <button type="button" class="btn btn-warning">Update</button>
-      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
+     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Update <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a href="#">Existing Illness</a></li>
-        <li><a href="#">Remove Illness</a></li>
-        <li><a href="#">Remove Remedy</a></li>
+        <li><a id = "displayUpdate">Existing Illness</a></li>
+        <li><a id = "displayRemoveI">Remove Illness</a></li>
+        <li><a id = "displayRemoveR">Remove Remedy</a></li>
       </ul>
     </div>
 
 
 <!--     <div style = "visibility:hidden"> -->
-
+<div id = "addR" style = "display: none">
     <div>
     	<h3>Add an Illness:</h3>
     </div>
     <input ng-model="new_illness" placeholder="Insert Illness" />
     <input ng-model="new_symptoms" placeholder="Insert Symptoms for Illness" /> <button type="button" class="btn btn-primary btn-sm" ng-click="addIllness()">Submit</button>
-    
+</div>
   <!--   <div ng-view></div>	
     <div style = "display:none"> -->
-  	  <div>
+<div id = "addI" style = "display: none">
+      <div>
   	  	<h3>Add a Remedy:</h3>
   	  </div>
   	  <input placeholder="Insert Remedy" /> <button type="button" class="btn btn-primary btn-sm">Submit</button>
+</div>
 
+<div id = "removeI" style = "display: none">
   	  <div>
   	  	<h4>Illness to remove:</h4>
   	  </div>
   	  <input ng-model="delete_illness" placeholder="Remove this Illness" /> <button type="button" class="btn btn-primary btn-sm" ng-click="deleteIllness()">Submit</button>
-  	  	
+</div>
+
+<div id = "removeR" style = "display: none">
   	  <div>
   	  	<h4>Remedy to remove:</h4>
   	  </div>
   	  <input placeholder="Remove this Remedy" /> <button type="button" class="btn btn-primary btn-sm">Submit</button>
-
+</div>
+<div id = "update" style = "display: none">
       <div>
         <h4>Update Illness Symptoms:</h4>
       </div>
       <input ng-model="illness_update_symptoms" placeholder="Illness you want to update" />
       <input ng-model="update_symptoms" placeholder="Type updated symptoms here" /> <button type="button" class="btn btn-primary btn-sm" ng-click="updateIllness()">Submit</button>
-
+</div>
     <div>
     </div>
 <!--   </div> -->
