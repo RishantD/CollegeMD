@@ -17,13 +17,13 @@
 	<div ng-controller="main_controller" style="color:blue; padding-left:9%">
   		<h1>CollegeMD</h1>
 
-
-    <div class="panel panel-default" style = "width:30%">
+    <!-- Searching by Illness -->
+    <div class="panel panel-default" style = "width:40%">
   	  <div class="panel-heading">
   	    <h3 class="panel-title">Search by Illness:</h3>
   	  </div>
   	  <div class="panel-body">
-  		<input ng-model="illness" style = "width:300px" placeholder="Search by Illness" />
+  		<input ng-model="illness" style = "width:80%" placeholder="Search by Illness" />
     		<button ng-click="searchIllness()" button type="button" class="btn btn-primary btn-sm">Search</button>
     	   <h1><span ng-bind="view_illness.name"></span></h1>
          <h5 ng-show="view_illness != ''">Symptoms:</h5>
@@ -33,18 +33,18 @@
   	  </div>
   	</div>
 
-
-    <div class="panel panel-default" style = "width:30%">
+    <!-- Checkboxes for selecting common symptoms to search with -->
+    <div class="panel panel-default" style = "width:40%">
   	  <div class="panel-heading">
   	    <h3 class="panel-title">Search by Symptoms:</h3>
   	  </div>
   	  <div class="panel-body">
     	    	<form action="">
-  			<input type="checkbox"> Cough 
-  			<input type="checkbox"> Cold 
-  			<input type="checkbox"> Sore Throat 
-  			<input type="checkbox"> Fever 
-  			<input type="checkbox"> Headache <br>
+  			<label class="checkbox-inline"> <input type="checkbox"> Cough </label>
+  			<label class="checkbox-inline"> <input type="checkbox"> Cold </label>
+  			<label class="checkbox-inline"> <input type="checkbox"> Sore Throat </label>
+  			<label class="checkbox-inline"> <input type="checkbox"> Fever </label>
+  			<label class="checkbox-inline"> <input type="checkbox"> Headache </label> <br>
     </form>
 
   	<br />
@@ -53,7 +53,32 @@
   	  </div>
   	</div>
 
-  <div style = "padding-left:2%">  <button type="button" class="btn btn-primary btn-sm">Update Pre-existing Illness</button> </div>
+    <!-- Dropdown button menu for Adding Illness/Remedy -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary">Add</button>
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="caret"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Illness</a></li>
+        <li><a href="#">Remedy</a></li>
+      </ul>
+    </div>
+
+    <!-- Dropdown button menu for editing existing stuff -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-warning">Update</button>
+      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Existing Illness</a></li>
+        <li><a href="#">Remove Illness</a></li>
+        <li><a href="#">Remove Remedy</a></li>
+      </ul>
+    </div>
 
 
 <!--     <div style = "visibility:hidden"> -->
