@@ -13,7 +13,7 @@ module.exports = {
 				var newRemedy = new Remedy({
 					createdAt: body.timestamp,
 					illness: illness._id,
-					cure: body.name,
+					cure: body.name.toUpperCase(),
 					upvote: body.upvote
 				});
 
@@ -29,7 +29,7 @@ module.exports = {
 		});
 	},
 	updateRemedy: function(req, res) {
-		Remedy.update({ _id:body.id},{$set:{'cure':body.cure}}, function(err, updateRem) {
+		Remedy.update({ _id:body.id},{$set:{'cure':body.cure.toUpperCase()}}, function(err, updateRem) {
 			if (err) {
 						return res.status(400).send({message: "Remedy Not Found"});
 					} else {
