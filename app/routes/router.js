@@ -10,6 +10,7 @@ module.exports = function(app){
 	app.post('/api/Illness/get', Illness.getIllness),
 	app.post('/api/Illness/getBySymptoms', Illness.getIllnessBySymptoms),
 	app.post('/api/Illness/delete', Illness.deleteIllness),
+	app.post('/api/Illness/update', Illness.updateIllness),
 	app.post('/api/Remedy/add', Remedy.addRemedy),
 	app.post('/api/Remedy/update', Remedy.updateRemedy),
 	app.get('/api/Remedy/get', Remedy.getAllRemedies),

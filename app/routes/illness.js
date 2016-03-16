@@ -19,6 +19,15 @@ module.exports = {
 			}
 		});
 	},
+	updateIllness: function(req, res) {
+		Illness.update({ name:body.name},{$set:{'symptoms':body.symptoms}}, function(err, updateIll) {
+			if (err) {
+						return res.status(400).send({message: "Illness Not Found"});
+					} else {
+						return res.status(200).send({message: "Illness Updated", data: updateIll});
+					}
+		});
+	},
 	getIllness: function (req, res) {
 		//Gets the Illness for a particular search from the database
 		var body = req.body;
