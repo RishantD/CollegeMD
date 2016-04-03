@@ -12,12 +12,31 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="/assets/main.css" >
   	<title>CollegeMD</title>
+    <style>
+      #map {
+        width: 500px;
+        height: 400px;
+      }
+    </style>
 </head>
 <body>
 	
 	<div ng-controller="main_controller" style="color:blue; padding-left:9%">
   		<h1>CollegeMD</h1>
 
+      <div id="map"></div>
+    <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 44.540, lng: -78.546},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+      
     <!-- Searching by Illness -->
     <div class="panel panel-default" style = "width:40%">
   	  <div class="panel-heading">
