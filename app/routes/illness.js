@@ -1,4 +1,5 @@
 var Illness = require('../models/illness.js');
+var Search = require('../models/Search.js');
 
 module.exports = {
 	addIllness: function (req, res) {
@@ -21,7 +22,7 @@ module.exports = {
 	},
 	updateIllness: function(req, res) {
 		var body = req.body;
-		
+
 		Illness.update({ name:body.name.toUpperCase()},{$set:{'symptoms':body.symptoms}}, function(err, updateIll) {
 			if (err) {
 						return res.status(400).send({message: "Illness Not Found"});

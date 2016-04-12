@@ -10,6 +10,10 @@ var morgan = require('morgan');
 
 
 var config = require('./config.js');
+var passport = require('passport')
+app.use(passport.initialize())
+app.use(passport.session())
+
 process.env.config = JSON.stringify(config);
 app.use(morgan('dev'));
 
@@ -17,7 +21,8 @@ mongoose.connect(config.MONGODB.URL);
 
 app.use(express.static("public"));
 
-require('./app/routes/router.js')(app);
+require('./app/routes/auth')(passport)
+require('./app/routes/router.js')(app, passport);
 
 app.listen(config.PORT);
 console.log("Server running");
