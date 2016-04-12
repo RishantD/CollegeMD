@@ -14,7 +14,7 @@
   	<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
 	<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
 	<style>
-      #map { position:absolute; top:0; bottom:0; padding-bottom: 44px; overflow: hidden; width:25%;height: 25%; }
+      #map { position:absolute; top:10%; left:50%; padding-bottom: 44px; overflow: hidden; width:40%;height: 40%; }
     </style>
   	<title>CollegeMD</title>
 </head>
@@ -129,5 +129,64 @@
         <div>
         </div>
     <!--   </div> -->
+<button style = "position: absolute; top: 2%; left: 78%;" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Log In/Sign Up
+</button>
+ 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Login/Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs">
+        <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+        <li><a href="#create" data-toggle="tab">Create Account</a></li>
+      </ul>
+      <div class = "tab-content" id = "myTabContent">
+        <div class="tab-pane active in" id="login">
+          <h3> Login </h3>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Login</button>
+        </div>
+        
+ 
+        <div class="tab-pane fade" id="create">
+          <h3> Sign Up </h3>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Confirm Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Zipcode</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Sign Up</button>
+        </div>
+      </div>
+ 
+      </div>
+   
+    </div>
+  </div>
+</div>
 </body>
 </html>
