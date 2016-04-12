@@ -10,6 +10,9 @@
 		$scope.update_symptoms = '';
 		$scope.illness_update_symptoms = '';
 
+		L.mapbox.accessToken = 'pk.eyJ1IjoicmlzaGFudGQiLCJhIjoidEk0dGdZYyJ9.-ZMFVJwFh4HSYZMYHee7Gw';
+		var geocoder = L.mapbox.geocoder('mapbox.places'), map = L.mapbox.map('map', 'rishantd.lbc55bee').setView([38.50, -98.35], 5);
+
 		$scope.searchIllness = function() {
 
 			var config = {
