@@ -9,7 +9,8 @@ var UserSchema = new Schema({
 	name: {
 	  first: {type: String, required: true},
 	  last: {type: String, required: true}
-	}
+	},
+	zipcode: {type: Number, required: true}
 });
 
 UserSchema.pre('save', function(cb){
