@@ -39,19 +39,19 @@ module.exports = {
 			if (err) {
 				return res.status(400).send({message: "Illness Not Found", data: []});
 			} else {
-				var newSearch = new Search({
-					email: req.user.email,
-					illnessName: illness.name,
-					zipcode: req.user.zipcode,
-					createdAt: body.timestamp 
-				});
-				newSearch.save(function(err, newSearch){
-					//Adds the search to the database
-					if (err) {
-						return res.status(400).send({message: "Search Not Added"});
-					} else {
+				// var newSearch = new Search({
+				// 	email: req.user.email,
+				// 	illnessName: illness.name,
+				// 	zipcode: req.user.zipcode,
+				// 	createdAt: body.timestamp 
+				// });
+				// newSearch.save(function(err, newSearch){
+				// 	//Adds the search to the database
+				// 	if (err) {
+				// 		return res.status(400).send({message: "Search Not Added"});
+				// 	} else {
 						return res.status(200).send({message: "Illness Found", data: illness});
-					}
+					//}
 				});
 			}
 		});
@@ -94,7 +94,7 @@ module.exports = {
 		var newSearch = new Search({
 			email: "1@2.com",
 			illnessName: body.name.toUpperCase(),
-			zipcode: 61801,
+			zipcode: 94059,
 			createdAt: body.timestamp 
 		});
 		newSearch.save(function(err, newSearch){
