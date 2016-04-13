@@ -113,12 +113,10 @@
 
 			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input}, config)
 				.success(function(response) {
-					console.log(response);
 					alert("Worked!");
 				})
 				.error(function(response) {
-					console.log(response);
-					alert("Failed D:");
+					alert("Incorrect Email or Password");
 				});
 		};
 
