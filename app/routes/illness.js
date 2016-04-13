@@ -89,7 +89,7 @@ module.exports = {
 			}
 		});
 	},
-	addSearch = function(req, res) {
+	addSearch: function(req, res) {
 		var body = req.body;
 		var newSearch = new Search({
 			email: "1@2.com",
