@@ -105,5 +105,43 @@ module.exports = {
 				return res.status(200).send({message: "Illness Found", data: newSearch});
 			}
 		});
+	},
+	getRelatedIllness: function(req,res) {
+		var body = req.body;
+
+		Search.find({zipcode: req.user.zipcode}, function(err, results) {
+			if (err) {
+				return res.status(400).send({message: "No illnesses searched in area"});
+			} else {
+				var filterArray = {};
+				for(i in results) {
+					if filterArray[results[i].illnessName] === NULL {
+						filterArray[results[i].illnessName] = 1;
+					}
+
+					else {
+						filterArray[results[i].illnessName] += 1; 
+					}
+				}
+
+				var max = 0;
+				var topThree = {};
+				var temp;
+				while(Object.keys(topThree).length < 4) {
+					for(k in filterArray) {
+						if(filterArray[k] > max && topThree[k] === NULL) {
+							max = filterArray[k];
+							temp = k;
+						}
+					}
+
+					topThree.push(temp);
+				}
+
+				results = topThree;
+
+				return res.status(200).send({message: "Illnesses Found", data: results});
+			}
+		});
 	}
 };
