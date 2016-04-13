@@ -16,6 +16,7 @@
 		$scope.password_match_error;
 		$scope.new_first_name = '';
 		$scope.new_last_name = '';
+		$scope.locations = '';
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicmlzaGFudGQiLCJhIjoidEk0dGdZYyJ9.-ZMFVJwFh4HSYZMYHee7Gw';
 		var geocoder = L.mapbox.geocoder('mapbox.places'), map = L.mapbox.map('map', 'rishantd.lbc55bee').setView([38.50, -98.35], 5);
@@ -30,9 +31,22 @@
 
 			$http.post('api/Illness/get', {name: $scope.illness}, config).then(function(response) {
 				$scope.view_illness = response.data.data;
+				$scope.getLocations(response.data.data.name);
 			});
 
 		};
+
+		$scope.getLocations = function(illness) {
+			var config = {
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}
+
+			$http.post('api/Illness/getLocations', {name: illness}, config).then(function(response) {
+				$scope.locations = response.data.data;
+			}
+		}
 
 		$scope.addIllness = function() {
 			var config = {
