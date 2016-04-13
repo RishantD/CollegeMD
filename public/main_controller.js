@@ -103,9 +103,10 @@
 				}
 
 				else {
-					alert("Failed :(");
+					alert("Failed D:");
 				}
 			});
+		}
 
 		$scope.logOut = function() {
 			$window.location.href= '/';
