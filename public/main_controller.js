@@ -45,7 +45,7 @@
 
 			$http.post('api/Illness/getLocations', {name: illness}, config).then(function(response) {
 				$scope.locations = response.data.data;
-			}
+			});
 		}
 
 		$scope.addIllness = function() {
