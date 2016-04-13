@@ -39,7 +39,20 @@ module.exports = {
 			if (err) {
 				return res.status(400).send({message: "Illness Not Found", data: []});
 			} else {
-				return res.status(200).send({message: "Illness Found", data: illness});
+				var newSearch = new Search({
+					email: req.user.email,
+					illnessName: illness.name,
+					zipcode: req.user.zipcode,
+					createdAt: body.timestamp 
+				});
+				newSearch.save(function(err, newSearch){
+					//Adds the search to the database
+					if (err) {
+						return res.status(400).send({message: "Search Not Added"});
+					} else {
+						return res.status(200).send({message: "Illness Found", data: illness});
+					}
+				});
 			}
 		});
 	},
@@ -62,6 +75,17 @@ module.exports = {
 				return res.status(400).send({message: "Illness Not Found"});
 			} else {
 				return res.status(200).send({message: "Illness Deleted"});
+			}
+		});
+	},
+	getIllnessZip: function(req, res) {
+		var body = req.body;
+
+		Search.find({illnessName: body.illness.toUpperCase()}, function(err, locations) {
+			if (err) {
+				return res.status(400).send({message: "Illness Not Found"});
+			} else {
+				return res.status(200).send({message: "Illness Found", data: locations});
 			}
 		});
 	}
