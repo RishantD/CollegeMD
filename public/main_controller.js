@@ -90,6 +90,18 @@
 			});
 		};
 
+		$scope.login = function() {
+			var config = {
+				headers: {
+					'Content-Type':'application/json'
+				}
+			}
+
+			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input).then(function(response) {
+				alert("Logged In!");
+			});
+		};
+
 		$("#displayAddR").click(function() {
 			$("#addR").toggle();
 		});
