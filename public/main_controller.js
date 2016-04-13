@@ -104,7 +104,7 @@
 			});
 		};
 
-		$scope.login = function() {
+		$scope.logIn = function() {
 			var config = {
 				headers: {
 					'Content-Type':'application/json'
