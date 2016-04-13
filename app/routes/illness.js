@@ -88,5 +88,22 @@ module.exports = {
 				return res.status(200).send({message: "Illness Found", data: locations});
 			}
 		});
+	},
+	addSearch = function(req, res) {
+		var body = req.body;
+		var newSearch = new Search({
+			email: "1@2.com",
+			illnessName: body.name.toUpperCase(),
+			zipcode: 61801,
+			createdAt: body.timestamp 
+		});
+		newSearch.save(function(err, newSearch){
+			//Adds the search to the database
+			if (err) {
+				return res.status(400).send({message: "Search Not Added"});
+			} else {
+				return res.status(200).send({message: "Illness Found", data: newSearch});
+			}
+		});
 	}
 };
