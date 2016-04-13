@@ -1,5 +1,5 @@
 var Illness = require('../models/illness.js');
-var Search = require('../models/Search.js');
+var Search = require('../models/search.js');
 
 module.exports = {
 	addIllness: function (req, res) {
