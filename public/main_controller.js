@@ -111,14 +111,15 @@
 				}
 			}
 
-			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input}, config).then(function(response) {
-				console.log(response);
-				if(response.status === 200) {
+			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input}, config)
+				.success(function(response) {
+					console.log(response);
 					alert("Worked!");
-				} else {
+				})
+				.error(function(response) {
+					console.log(response);
 					alert("Failed D:");
-				}
-			});
+				});
 		};
 
 		$scope.logOut = function() {
