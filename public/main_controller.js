@@ -20,6 +20,7 @@
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicmlzaGFudGQiLCJhIjoidEk0dGdZYyJ9.-ZMFVJwFh4HSYZMYHee7Gw';
 		var geocoder = L.mapbox.geocoder('mapbox.places'), map = L.mapbox.map('map', 'rishantd.lbc55bee').setView([38.50, -98.35], 5);
+		var markers = new L.MarkerClusterGroup();
 
 		$scope.searchIllness = function() {
 
@@ -31,22 +32,44 @@
 
 			$http.post('api/Illness/get', {name: $scope.illness}, config).then(function(response) {
 				$scope.view_illness = response.data.data;
-				$scope.getLocations(response.data.data.name);
+				$scope.getLocations(response.data.data);
 			});
 
 		};
 
 		$scope.getLocations = function(illness) {
-			var config = {
-				headers: {
-					'Content-Type': 'application/json'
+			
+			if (illness.hasOwnProperty(name)) {
+				var config = {
+					headers: {
+						'Content-Type': 'application/json'
+					}
 				}
-			}
 
-			$http.post('api/Illness/getLocations', {name: illness}, config).then(function(response) {
-				$scope.locations = response.data.data;
-			});
+				$http.post('api/Illness/getLocations', {name: illness.name}, config).then(function(response) {
+					$scope.locations = response.data.data;
+					$scope.render;
+				});
+			}
 		};
+
+		$scope.render = function(){
+			map.removeLayer(markers);
+  			markers.clearLayers();
+			for (i = 0; i < $scope.locations.length; i++)
+			{    
+				geocoder.query($scope.locations[i].zipcode, showMap);
+				function showMap(err, data) {
+					var marker = L.circle([data.latlng[0], data.latlng[1]], 5000, {
+						color: 'red',
+						fillColor: '#f03',
+						fillOpacity: 0.5
+					});
+					markers.addLayer(marker); 
+				}   
+			}
+      		map.addLayer(markers);
+		}
 
 		$scope.addIllness = function() {
 			var config = {
