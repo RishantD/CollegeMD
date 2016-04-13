@@ -14,7 +14,7 @@ module.exports = function(app, passport){
 
 	app.post('/users', controllers.users.create)
 	
-	app.post('/api/Illness/create', Illness.addIllness),
+	app.post('/api/Illness/create', middleware.auth.isLoggedIn, Illness.addIllness),
 	app.post('/api/Illness/get', Illness.getIllness),
 	app.post('/api/Illness/getBySymptoms', Illness.getIllnessBySymptoms),
 	app.post('/api/Illness/delete', Illness.deleteIllness),

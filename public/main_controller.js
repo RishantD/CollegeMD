@@ -9,6 +9,11 @@
 		$scope.delete_illness = '';
 		$scope.update_symptoms = '';
 		$scope.illness_update_symptoms = '';
+		$scope.new_email = '';
+		$scope.new_password = '';
+		$scope.confirm_password = '';
+		$scope.new_zipcode;
+		$scope.password_match_error;
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicmlzaGFudGQiLCJhIjoidEk0dGdZYyJ9.-ZMFVJwFh4HSYZMYHee7Gw';
 		var geocoder = L.mapbox.geocoder('mapbox.places'), map = L.mapbox.map('map', 'rishantd.lbc55bee').setView([38.50, -98.35], 5);
@@ -54,6 +59,7 @@
 		};
 
 		$scope.updateIllness = function() {
+			
 			var config = {
 				headers: {
 					'Content-Type': 'application/json'
@@ -70,6 +76,25 @@
 
 		};
 
+		$scope.makeAccount = function() {
+
+			if($scope.new_password != $scope.confirm_password) {
+				$scope.password_match_error = 'Passwords do not match. Please Try Again.'
+			}
+
+			else {
+				var config = {
+					headers: {
+						'Content-Type':'application/json'
+					}
+				}
+
+				$http.post('users', {email: ,password: , name:{first:,last:}}).then(function(response) {
+					//place .then conditions
+				});
+			}
+
+		};
 
 		$("#displayAddR").click(function() {
 			$("#addR").toggle();
