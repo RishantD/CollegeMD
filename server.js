@@ -27,6 +27,6 @@ app.use(express.static("public"))
 require('./app/routes/auth')(passport)
 require('./app/routes/router.js')(app, passport)
 
-app.listen(port, function(){
-  console.log("Server running on port: " + port)
+app.listen(config.PORT, function(){
+  console.log("Server running on port: " + config.PORT)
 })
