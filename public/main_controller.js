@@ -112,6 +112,7 @@
 			}
 
 			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input}).then(function(response) {
+				console.log(response);
 				if(response.status == 200) {
 					alert("Worked!");
 				}
