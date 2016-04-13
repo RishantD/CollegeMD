@@ -14,6 +14,8 @@
 		$scope.confirm_password = '';
 		$scope.new_zipcode;
 		$scope.password_match_error;
+		$scope.new_first_name = '';
+		$scope.new_last_name = '';
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicmlzaGFudGQiLCJhIjoidEk0dGdZYyJ9.-ZMFVJwFh4HSYZMYHee7Gw';
 		var geocoder = L.mapbox.geocoder('mapbox.places'), map = L.mapbox.map('map', 'rishantd.lbc55bee').setView([38.50, -98.35], 5);
@@ -89,8 +91,8 @@
 					}
 				}
 
-				$http.post('users', {email: ,password: , name:{first:,last:}}).then(function(response) {
-					//place .then conditions
+				$http.post('users', {email: $scope.new_email, password: $scope.new_password, name:{first: $scope.new_first_name,last: $scope.new_last_name}, zipcode: $scope.new_zipcode}).then(function(response) {
+					alert("Signed Up!");
 				});
 			}
 

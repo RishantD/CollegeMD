@@ -165,6 +165,14 @@
           <h3> Sign Up </h3>
           <h4 id="password-match-error">{{password_match_error}}</h4>
           <div class="form-group">
+            <label for="exampleInputFirstName">First Name</label>
+            <input type="name" class="form-control" id="exampleInputFirstName" placeholder="First Name" ng-model="new_first_name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputLastName">Last Name</label>
+            <input type="name" class="form-control" id="exampleInputLastName" placeholder="Last Name" ng-model="new_last_name">
+          </div>
+          <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="new_email">
           </div>
@@ -177,8 +185,8 @@
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="confirm_password">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Zipcode</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="new_zipcode">
+            <label for="exampleInputZIPCode">ZIP Code</label>
+            <input type="ZIPCode" class="form-control" id="exampleInputZIPCode" placeholder="ZIP Code" ng-model="new_zipcode">
           </div>
           <button type="button" class="btn btn-success btn-lg" data-dismiss="modal" ng-click="makeAccount()">Sign Up</button>
         </div>
