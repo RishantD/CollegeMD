@@ -13,7 +13,7 @@
 		$scope.new_password = '';
 		$scope.confirm_password = '';
 		$scope.new_zipcode;
-		$scope.password_match_error;
+		$scope.password_match_error = 'Passwords do not match';
 		$scope.new_first_name = '';
 		$scope.new_last_name = '';
 
@@ -79,23 +79,15 @@
 		};
 
 		$scope.makeAccount = function() {
-
-			if($scope.new_password != $scope.confirm_password) {
-				$scope.password_match_error = 'Passwords do not match. Please Try Again.'
-			}
-
-			else {
-				var config = {
-					headers: {
-						'Content-Type':'application/json'
-					}
+			var config = {
+				headers: {
+					'Content-Type':'application/json'
 				}
-
-				$http.post('users', {email: $scope.new_email, password: $scope.new_password, name:{first: $scope.new_first_name,last: $scope.new_last_name}, zipcode: $scope.new_zipcode}).then(function(response) {
-					alert("Signed Up!");
-				});
 			}
 
+			$http.post('users', {email: $scope.new_email, password: $scope.new_password, name:{first: $scope.new_first_name,last: $scope.new_last_name}, zipcode: $scope.new_zipcode}).then(function(response) {
+				alert("Signed Up!");
+			});
 		};
 
 		$("#displayAddR").click(function() {
