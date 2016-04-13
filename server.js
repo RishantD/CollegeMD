@@ -2,27 +2,31 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-
 var mongoose = require('mongoose');
 var morgan = require('morgan');
-
-
-var config = require('./config.js');
+var expressSession = require('express-session')
+var config = require('./config.js')
 var passport = require('passport')
-app.use(passport.initialize())
-app.use(passport.session())
 
 process.env.config = JSON.stringify(config);
-app.use(morgan('dev'));
 
 mongoose.connect(config.MONGODB.URL);
 
-app.use(express.static("public"));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(expressSession({
+  secret: "collegemdsecretcode",
+  resave: false,
+  saveUninitialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(morgan('dev'));
+app.use(express.static("public"))
 
 require('./app/routes/auth')(passport)
-require('./app/routes/router.js')(app, passport);
+require('./app/routes/router.js')(app, passport)
 
-app.listen(config.PORT);
-console.log("Server running");
+app.listen(port, function(){
+  console.log("Server running on port: " + port)
+})
