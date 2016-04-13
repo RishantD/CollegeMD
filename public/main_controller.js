@@ -1,6 +1,6 @@
 (function() {
 	var app = angular.module('collegemd');
-	app.controller('main_controller', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
+	app.controller('main_controller', ['$scope', '$http', '$timeout', '$window', function($scope, $http, $timeout, $window) {
 		
 		$scope.illness = '';
 		$scope.view_illness = '';
@@ -85,9 +85,14 @@
 				}
 			}
 
-			$http.post('users', {email: $scope.new_email, password: $scope.new_password, name:{first: $scope.new_first_name,last: $scope.new_last_name}, zipcode: $scope.new_zipcode}).then(function(response) {
+			$http.post('users', {email: $scope.new_email, password: $scope.new_password, name:{first: $scope.new_first_name,last: $scope.new_last_name}, zipcode: $scope.new_zipcode}, config).then(function(response) {
 				alert("Signed Up!");
 			});
+		};
+
+		$scope.logOut = function() {
+			$window.location.href= '/';
+			$http.delete('users/auth');
 		};
 
 		$("#displayAddR").click(function() {
