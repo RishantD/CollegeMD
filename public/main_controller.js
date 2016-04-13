@@ -1,6 +1,6 @@
 (function() {
 	var app = angular.module('collegemd');
-	app.controller('main_controller', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
+	app.controller('main_controller', ['$scope', '$http', '$timeout', '$window', function($scope, $http, $timeout, $window) {
 		
 		$scope.illness = '';
 		$scope.view_illness = '';
@@ -13,7 +13,7 @@
 		$scope.new_password = '';
 		$scope.confirm_password = '';
 		$scope.new_zipcode;
-		$scope.password_match_error;
+		$scope.password_match_error = 'Passwords do not match';
 		$scope.new_first_name = '';
 		$scope.new_last_name = '';
 		$scope.locations = '';
@@ -93,23 +93,37 @@
 		};
 
 		$scope.makeAccount = function() {
-
-			if($scope.new_password != $scope.confirm_password) {
-				$scope.password_match_error = 'Passwords do not match. Please Try Again.'
+			var config = {
+				headers: {
+					'Content-Type':'application/json'
+				}
 			}
 
-			else {
-				var config = {
-					headers: {
-						'Content-Type':'application/json'
-					}
+			$http.post('users', {email: $scope.new_email, password: $scope.new_password, name:{first: $scope.new_first_name,last: $scope.new_last_name}, zipcode: $scope.new_zipcode}, config).then(function(response) {
+				alert("Signed Up!");
+			});
+		};
+
+		$scope.login = function() {
+			var config = {
+				headers: {
+					'Content-Type':'application/json'
+				}
+			}
+
+			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input}).then(function(response) {
+				if(response.status == 200) {
+					alert("Worked!");
 				}
 
-				$http.post('users', {email: $scope.new_email, password: $scope.new_password, name:{first: $scope.new_first_name,last: $scope.new_last_name}, zipcode: $scope.new_zipcode}).then(function(response) {
-					alert("Signed Up!");
-				});
-			}
+				else {
+					alert("Failed :(");
+				}
+			});
 
+		$scope.logOut = function() {
+			$window.location.href= '/';
+			$http.delete('users/auth');
 		};
 
 		$("#displayAddR").click(function() {
