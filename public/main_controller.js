@@ -111,12 +111,11 @@
 				}
 			}
 
-			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input}).then(function(response) {
-				if(response.status == 200) {
+			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input}, config).then(function(response) {
+				console.log(response);
+				if(response.status === 200) {
 					alert("Worked!");
-				}
-
-				else {
+				} else {
 					alert("Failed D:");
 				}
 			});
