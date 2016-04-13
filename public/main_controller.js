@@ -97,8 +97,14 @@
 				}
 			}
 
-			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input).then(function(response) {
-				alert("Logged In!");
+			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input}).then(function(response) {
+				if(response.status == 200) {
+					alert("Worked!");
+				}
+
+				else {
+					alert("Failed :(");
+				}
 			});
 
 		$scope.logOut = function() {
