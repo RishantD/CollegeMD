@@ -117,7 +117,6 @@ module.exports = {
 				for(i in results) {
 					if (isNaN(filterArray[results[i].illnessName])) {
 						filterArray[results[i].illnessName] = 1;
-						console.log(filterArray[results[i].illnessName]);
 					}
 					else {
 						filterArray[results[i].illnessName] += 1; 
@@ -135,22 +134,6 @@ module.exports = {
 				});
 
 				results = items.slice(0, 3);
-
-				// var max = 0;
-				// var topThree = {};
-				// var temp;
-				// while(Object.keys(topThree).length < 4) {
-				// 	for(k in filterArray) {
-				// 		if(filterArray[k] > max && topThree[k] === null) {
-				// 			max = filterArray[k];
-				// 			temp = k;
-				// 		}
-				// 	}
-
-				// 	topThree.push(temp);
-				// }
-
-				// results = topThree;
 
 				return res.status(200).send({message: "Found", data: results});
 			}
