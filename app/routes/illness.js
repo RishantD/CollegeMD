@@ -124,21 +124,31 @@ module.exports = {
 					}
 				}
 
-				var max = 0;
-				var topThree = {};
-				var temp;
-				while(Object.keys(topThree).length < 4) {
-					for(k in filterArray) {
-						if(filterArray[k] > max && topThree[k] === null) {
-							max = filterArray[k];
-							temp = k;
-						}
-					}
+				var items = Object.keys(filterArray).map(function(key) {
+				    return [key, filterArray[key]];
+				});
 
-					topThree.push(temp);
-				}
+				items.sort(function(first, second) {
+				    return second[1] - first[1];
+				});
 
-				results = topThree;
+				results = items.slice(0, 3);
+
+				// var max = 0;
+				// var topThree = {};
+				// var temp;
+				// while(Object.keys(topThree).length < 4) {
+				// 	for(k in filterArray) {
+				// 		if(filterArray[k] > max && topThree[k] === null) {
+				// 			max = filterArray[k];
+				// 			temp = k;
+				// 		}
+				// 	}
+
+				// 	topThree.push(temp);
+				// }
+
+				// results = topThree;
 
 				return res.status(200).send({message: "Illnesses Found", data: results});
 			}
