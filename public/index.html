@@ -140,9 +140,11 @@
         <div>
         </div>
     <!--   </div> -->
-<button type="button" ng-click="logOut()">LogOut</button>
-<button style = "position: absolute; top: 2%; left: 78%;" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<button style = "position: absolute; top: 2%; left: 78%;" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-show="!loggedIn">
   Log In/Sign Up
+</button>
+<button style = "position: absolute; top: 2%; left: 78%;" type="button" class="btn btn-primary btn-lg" ng-click="logOut()" ng-show="loggedIn">
+  Log Out
 </button>
  
 <!-- Modal -->

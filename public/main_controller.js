@@ -18,6 +18,7 @@
 		$scope.new_last_name = '';
 		$scope.locations = '';
 		$scope.illnessrecs = {};
+		$scope.loggedIn = false;
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicmlzaGFudGQiLCJhIjoiY2ltemxpYXp2MDR3Z3drbHVoOHZ0Z2NuYSJ9.Z1Dq85YdC-PRd1WqZUi7sA';
 		var geocoder = L.mapbox.geocoder('mapbox.places'), map = L.mapbox.map('map', 'rishantd.lbc55bee').setView([38.50, -98.35], 3);
@@ -140,6 +141,7 @@
 			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input}, config)
 				.success(function(response) {
 					alert("Worked!");
+					$scope.loggedIn = true;
 					$http.get('api/getRecs', config)
 						.success(function(response) {
 							$scope.illnessrecs = response.data;
@@ -155,7 +157,9 @@
 
 		$scope.logOut = function() {
 			$window.location.href= '/';
-			$http.delete('users/auth');
+			$http.delete('users/auth').success(function(response) {
+				$scope.loggedIn = false;
+			});
 		};
 
 		$("#displayAddR").click(function() {
