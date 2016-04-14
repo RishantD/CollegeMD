@@ -142,7 +142,7 @@
 						.success(function(response) {
 							console.log(response.data.data);
 							$scope.illnessrecs = response.data.data;
-						});
+						})
 						.error(function(response) {
 							alert("No one has searched anything in your area before");
 						});
