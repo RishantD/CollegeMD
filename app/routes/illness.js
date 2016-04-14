@@ -81,7 +81,7 @@ module.exports = {
 	getIllnessZip: function(req, res) {
 		var body = req.body;
 
-		Search.find({illnessName: body.illness.toUpperCase()}, function(err, locations) {
+		Search.find({illnessName: body.name.toUpperCase()}, function(err, locations) {
 			if (err) {
 				return res.status(400).send({message: "Illness Not Found"});
 			} else {
