@@ -94,7 +94,7 @@ module.exports = {
 		var newSearch = new Search({
 			email: "1@2.com",
 			illnessName: body.name.toUpperCase(),
-			zipcode: 94059,
+			zipcode: 61801,
 			createdAt: body.timestamp 
 		});
 		newSearch.save(function(err, newSearch){
@@ -130,7 +130,7 @@ module.exports = {
 				items.sort(function(first, second) {
 				    return second[1] - first[1];
 				});
-
+				
 				results = items.slice(0, 3);
 
 				// var max = 0;
