@@ -115,7 +115,7 @@ module.exports = {
 			} else {
 				var filterArray = {};
 				for(i in results) {
-					if filterArray[results[i].illnessName] === NULL {
+					if filterArray[results[i].illnessName] === null {
 						filterArray[results[i].illnessName] = 1;
 					}
 
@@ -129,7 +129,7 @@ module.exports = {
 				var temp;
 				while(Object.keys(topThree).length < 4) {
 					for(k in filterArray) {
-						if(filterArray[k] > max && topThree[k] === NULL) {
+						if(filterArray[k] > max && topThree[k] === null) {
 							max = filterArray[k];
 							temp = k;
 						}
