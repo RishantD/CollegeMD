@@ -112,6 +112,7 @@ module.exports = {
 			if (err) {
 				return res.status(400).send({message: "No illnesses searched in area"});
 			} else {
+				console.log("Hello")
 				var filterArray = {};
 				for(i in results) {
 					if (filterArray[results[i].illnessName] === null) {
@@ -123,6 +124,8 @@ module.exports = {
 					}
 				}
 
+				console.log(filterArray);
+
 				var items = Object.keys(filterArray).map(function(key) {
 				    return [key, filterArray[key]];
 				});
@@ -130,7 +133,9 @@ module.exports = {
 				items.sort(function(first, second) {
 				    return second[1] - first[1];
 				});
-				
+
+				console.log(items);
+
 				results = items.slice(0, 3);
 
 				// var max = 0;
@@ -148,6 +153,8 @@ module.exports = {
 				// }
 
 				// results = topThree;
+
+				console.log(results);
 
 				return res.status(200).send({message: "Found", data: results});
 			}
