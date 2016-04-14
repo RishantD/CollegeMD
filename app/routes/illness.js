@@ -115,9 +115,9 @@ module.exports = {
 				console.log("Hello")
 				var filterArray = {};
 				for(i in results) {
-					console.log(filterArray[results[i].illnessName]);
-					if (filterArray[results[i].illnessName] === null) {
+					if (isNaN(filterArray[results[i].illnessName])) {
 						filterArray[results[i].illnessName] = 1;
+						console.log(filterArray[results[i].illnessName]);
 					}
 					else {
 						filterArray[results[i].illnessName] += 1; 
