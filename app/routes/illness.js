@@ -114,13 +114,13 @@ module.exports = {
 			} else {
 				console.log("Hello")
 				var filterArray = {};
-				for(i in results) {
-					if (filterArray[results[i].illnessName] === null) {
-						filterArray[results[i].illnessName] = 1;
-						console.log(filterArray[results[i].illnessName]);
+				for(resI in results) {
+					console.log(filterArray[resI.illnessName]);
+					if (filterArray[resI.illnessName] === null) {
+						filterArray[resI.illnessName] = 1;
 					}
 					else {
-						filterArray[results[i].illnessName] += 1; 
+						filterArray[resI.illnessName] += 1; 
 					}
 				}
 
