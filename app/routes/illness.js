@@ -107,7 +107,6 @@ module.exports = {
 		});
 	},
 	getRelatedIllness: function(req,res) {
-		var body = req.body;
 
 		Search.find({zipcode: req.user.zipcode}, function(err, results) {
 			if (err) {
@@ -150,7 +149,7 @@ module.exports = {
 
 				// results = topThree;
 
-				return res.status(200).send({message: "Illnesses Found", data: results});
+				return res.status(200).send({message: "Found", data: results});
 			}
 		});
 	}

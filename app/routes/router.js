@@ -24,6 +24,7 @@ module.exports = function(app, passport){
 	app.get('/api/Remedy/get', middleware.auth.isLoggedIn, Remedy.getAllRemedies),
 	app.post('/api/Remedy/delete', middleware.auth.isLoggedIn, Remedy.deleteRemedy),
 	app.post('/api/Illness/getLocations', middleware.auth.isLoggedIn, Illness.getIllnessZip),
-	app.post('/api/addSearch', Illness.addSearch)
+	app.post('/api/addSearch', Illness.addSearch),
+	app.get('/api/getRecs', Illness.getRelatedIllness)
 
 };
