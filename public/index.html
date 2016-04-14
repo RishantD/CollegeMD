@@ -39,7 +39,7 @@
           <p style="margin-left: 10px;"><span ng-bind="sym"></span></p>
          </div>
   	  </div>
-      <div class="recommendations">
+      <div class="recommendations" ng-show="illnessrecs.length > 0">
         <h1>People in your area are searching for:</h1>
         <div ng-repeat="(key,recs) in illnessrecs">
           <h2>{{recs[0]}}</h2>
