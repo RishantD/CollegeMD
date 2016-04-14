@@ -19,7 +19,7 @@
   <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
   <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 	<style>
-      #map { position:absolute; top:10%; left:50%; padding-bottom: 44px; overflow: hidden; width:40%;height: 40%; }
+      #map { position:absolute; top:10%; left:50%; overflow: hidden; width:40%;height: 40%; }
     </style>
   	<title>CollegeMD</title>
 </head>
@@ -42,13 +42,21 @@
           <p style="margin-left: 10px;"><span ng-bind="sym"></span></p>
          </div>
   	  </div>
-      <div class="recommendations" ng-show="illnessrecs.length > 0">
-        <h2>People in your area are searching for:</h2>
-        <div ng-repeat="(key,recs) in illnessrecs">
-          <h3>{{key + 1}}. {{recs[0]}}</h3>
+  	</div>
+
+    <div class="panel panel-default" style = "width:40%">
+      <div class="panel-heading">
+        <h3 class="panel-title">Recommendations:</h3>
+      </div>
+      <div class="panel-body">
+        <div class="recommendations" ng-show="illnessrecs.length > 0">
+          <h5>People in your area are also searching for:</h5>
+          <div ng-repeat="(key,recs) in illnessrecs">
+            <h6>{{key + 1}}. {{recs[0]}}</h6>
+          </div>
         </div>
       </div>
-  	</div>
+    </div>
 
   	<div id="wrap">
         <div id="main">
