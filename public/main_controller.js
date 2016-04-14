@@ -140,7 +140,7 @@
 
 			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input}, config)
 				.success(function(response) {
-					alert("Worked!");
+					alert("Logged In Successfully!");
 					$scope.loggedIn = true;
 					$http.get('api/getRecs', config)
 						.success(function(response) {

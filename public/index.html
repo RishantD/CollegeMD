@@ -43,9 +43,9 @@
          </div>
   	  </div>
       <div class="recommendations" ng-show="illnessrecs.length > 0">
-        <h1>People in your area are searching for:</h1>
+        <h2>People in your area are searching for:</h2>
         <div ng-repeat="(key,recs) in illnessrecs">
-          <h2>{{key + 1}}. {{recs[0]}}</h2>
+          <h3>{{key + 1}}. {{recs[0]}}</h3>
         </div>
       </div>
   	</div>
@@ -57,7 +57,7 @@
     </div>
 
     <!-- Checkboxes for selecting common symptoms to search with -->
-    <div class="panel panel-default" style = "width:40%">
+<!--     <div class="panel panel-default" style = "width:40%">
   	  <div class="panel-heading">
   	    <h3 class="panel-title">Search by Symptoms:</h3>
   	  </div>
@@ -74,7 +74,7 @@
     <button type="button" class="btn btn-primary btn-sm">Search</button>
     
   	  </div>
-  	</div>
+  	</div> -->
 
     <!-- Dropdown button menu for Adding Illness/Remedy -->
     <div class="btn-group">
