@@ -63,7 +63,7 @@
 				geocoder.query(String($scope.locations[i].zipcode), showMap);
 				function showMap(err, data) {
 					console.log(data);
-					var marker = L.circle([data.latlng[0], data.latlng[1]], 5000, {
+					var marker = L.circle([data.latlng[0], data.latlng[1]], 500, {
 						color: 'red',
 						fillColor: '#f03',
 						fillOpacity: 0.5
