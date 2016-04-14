@@ -15,7 +15,7 @@ module.exports = function(app, passport){
 	app.post('/users', controllers.users.create)
 	
 	app.post('/api/Illness/create', middleware.auth.isLoggedIn, Illness.addIllness),
-	app.post('/api/Illness/get', Illness.getIllness),
+	app.post('/api/Illness/get', middleware.auth.isLoggedIn, Illness.getIllness),
 	app.post('/api/Illness/getBySymptoms', middleware.auth.isLoggedIn, Illness.getIllnessBySymptoms),
 	app.post('/api/Illness/delete', middleware.auth.isLoggedIn, Illness.deleteIllness),
 	app.post('/api/Illness/update', middleware.auth.isLoggedIn, Illness.updateIllness),
@@ -25,6 +25,6 @@ module.exports = function(app, passport){
 	app.post('/api/Remedy/delete', middleware.auth.isLoggedIn, Remedy.deleteRemedy),
 	app.post('/api/Illness/getLocations', middleware.auth.isLoggedIn, Illness.getIllnessZip),
 	app.post('/api/addSearch', Illness.addSearch),
-	app.get('/api/getRecs', Illness.getRelatedIllness)
+	app.get('/api/getRecs', middleware.auth.isLoggedIn, Illness.getRelatedIllness)
 
 };
