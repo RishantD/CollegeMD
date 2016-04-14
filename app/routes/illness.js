@@ -115,7 +115,7 @@ module.exports = {
 			} else {
 				var filterArray = {};
 				for(i in results) {
-					if filterArray[results[i].illnessName] === null {
+					if (filterArray[results[i].illnessName] === null) {
 						filterArray[results[i].illnessName] = 1;
 					}
 
