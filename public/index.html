@@ -41,9 +41,9 @@
   	  </div>
       <div class="recommendations">
         <h1>People in your area are searching for:</h1>
-        <!-- <div ng-repeat="recs in illnessrecs">
-          <h2>{{recs.}}</h2>
-        </div> -->
+        <div ng-repeat="(key,recs) in illnessrecs">
+          <h2>{{recs[0]}}</h2>
+        </div>
       </div>
   	</div>
 
