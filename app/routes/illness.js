@@ -94,7 +94,7 @@ module.exports = {
 		var newSearch = new Search({
 			email: "1@2.com",
 			illnessName: body.name.toUpperCase(),
-			zipcode: 94059,
+			zipcode: 61801,
 			createdAt: body.timestamp 
 		});
 		newSearch.save(function(err, newSearch){
@@ -107,7 +107,6 @@ module.exports = {
 		});
 	},
 	getRelatedIllness: function(req,res) {
-		var body = req.body;
 
 		Search.find({zipcode: req.user.zipcode}, function(err, results) {
 			if (err) {
@@ -115,7 +114,7 @@ module.exports = {
 			} else {
 				var filterArray = {};
 				for(i in results) {
-					if filterArray[results[i].illnessName] === NULL {
+					if (filterArray[results[i].illnessName] === null) {
 						filterArray[results[i].illnessName] = 1;
 					}
 
@@ -124,23 +123,33 @@ module.exports = {
 					}
 				}
 
-				var max = 0;
-				var topThree = {};
-				var temp;
-				while(Object.keys(topThree).length < 4) {
-					for(k in filterArray) {
-						if(filterArray[k] > max && topThree[k] === NULL) {
-							max = filterArray[k];
-							temp = k;
-						}
-					}
+				var items = Object.keys(filterArray).map(function(key) {
+				    return [key, filterArray[key]];
+				});
 
-					topThree.push(temp);
-				}
+				items.sort(function(first, second) {
+				    return second[1] - first[1];
+				});
+				
+				results = items.slice(0, 3);
 
-				results = topThree;
+				// var max = 0;
+				// var topThree = {};
+				// var temp;
+				// while(Object.keys(topThree).length < 4) {
+				// 	for(k in filterArray) {
+				// 		if(filterArray[k] > max && topThree[k] === null) {
+				// 			max = filterArray[k];
+				// 			temp = k;
+				// 		}
+				// 	}
 
-				return res.status(200).send({message: "Illnesses Found", data: results});
+				// 	topThree.push(temp);
+				// }
+
+				// results = topThree;
+
+				return res.status(200).send({message: "Found", data: results});
 			}
 		});
 	}
