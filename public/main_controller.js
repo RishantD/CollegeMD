@@ -17,6 +17,7 @@
 		$scope.new_first_name = '';
 		$scope.new_last_name = '';
 		$scope.locations = '';
+		$scope.illnessrecs = {};
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicmlzaGFudGQiLCJhIjoidEk0dGdZYyJ9.-ZMFVJwFh4HSYZMYHee7Gw';
 		var geocoder = L.mapbox.geocoder('mapbox.places'), map = L.mapbox.map('map', 'rishantd.lbc55bee').setView([38.50, -98.35], 5);
@@ -137,6 +138,14 @@
 			$http.post('users/auth', {email: $scope.email_input, password: $scope.pwd_input}, config)
 				.success(function(response) {
 					alert("Worked!");
+					$http.get('api/getRecs', config)
+						.success(function(response) {
+							console.log(response.data.data);
+							$scope.illnessrecs = response.data.data;
+						});
+						.error(function(response) {
+							alert("No one has searched anything in your area before");
+						});
 				})
 				.error(function(response) {
 					alert("Incorrect Email or Password");
