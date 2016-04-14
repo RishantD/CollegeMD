@@ -59,15 +59,16 @@
 
 		$scope.render = function(){
 			for (i = 0; i < $scope.locations.length; i++)
-			{    
+			{ 
+				console.log($scope.locations[i].zipcode);   
 				geocoder.query($scope.locations[i].zipcode, showMap);
 				function showMap(err, data) {
+					console.log(data);
 					var marker = L.circle([data.latlng[0], data.latlng[1]], 5000, {
 						color: 'red',
 						fillColor: '#f03',
 						fillOpacity: 0.5
 					});
-					console.log(marker);
 					markers.addLayer(marker); 
 				}   
 			}
