@@ -117,8 +117,8 @@ module.exports = {
 				for(i in results) {
 					if (filterArray[results[i].illnessName] === null) {
 						filterArray[results[i].illnessName] = 1;
+						console.log(filterArray[results[i].illnessName]);
 					}
-
 					else {
 						filterArray[results[i].illnessName] += 1; 
 					}
@@ -133,8 +133,6 @@ module.exports = {
 				items.sort(function(first, second) {
 				    return second[1] - first[1];
 				});
-
-				console.log(items);
 
 				results = items.slice(0, 3);
 
@@ -153,8 +151,6 @@ module.exports = {
 				// }
 
 				// results = topThree;
-
-				console.log(results);
 
 				return res.status(200).send({message: "Found", data: results});
 			}
