@@ -127,7 +127,7 @@
 			}
 
 			$http.post('users', {email: $scope.new_email, password: $scope.new_password, name:{first: $scope.new_first_name,last: $scope.new_last_name}, zipcode: $scope.new_zipcode}, config).then(function(response) {
-				alert("Signed Up!");
+				$scope.logIn();
 			});
 		};
 
@@ -142,13 +142,19 @@
 				.success(function(response) {
 					alert("Logged In Successfully!");
 					$scope.loggedIn = true;
+					$scope.new_email = '';
+					$scope.new_password = '';
+					$scope.confirm_password = '';
+					$scope.new_zipcode;
+					$scope.new_first_name = '';
+					$scope.new_last_name = '';
 					$http.get('api/getRecs', config)
 						.success(function(response) {
 							$scope.illnessrecs = response.data;
 						})
 						.error(function(response) {
 							alert("No one has searched anything in your area before");
-						});
+						});					
 				})
 				.error(function(response) {
 					alert("Incorrect Email or Password");
