@@ -42,7 +42,7 @@
 			
 			console.log(illness);
 
-			if (illness.hasOwnProperty(name)) {
+			if (illness.hasOwnProperty('name')) {
 				var config = {
 					headers: {
 						'Content-Type': 'application/json'
