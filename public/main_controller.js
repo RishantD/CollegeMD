@@ -1,6 +1,6 @@
 (function() {
 	var app = angular.module('collegemd');
-	app.controller('main_controller', ['$scope', '$http', '$timeout', '$window', '$viewContentLoaded', function($scope, $http, $timeout, $window) {
+	app.controller('main_controller', ['$scope', '$http', '$timeout', '$window', function($scope, $http, $timeout, $window) {
 		
 		$scope.illness = '';
 		$scope.view_illness = '';
