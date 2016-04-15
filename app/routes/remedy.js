@@ -12,9 +12,9 @@ module.exports = {
 			} else {
 				var newRemedy = new Remedy({
 					createdAt: body.timestamp,
-					illness: illness._id,
-					cure: body.name.toUpperCase(),
-					upvote: body.upvote
+					illness: body.illness.toUpperCase(),
+					name: body.name.toUpperCase(),
+					cure: body.cure.toUpperCase()
 				});
 
 				newRemedy.save(function(err, newRem){
