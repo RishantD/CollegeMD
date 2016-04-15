@@ -24,25 +24,6 @@
 		var geocoder = L.mapbox.geocoder('mapbox.places'), map = L.mapbox.map('map', 'rishantd.lbc55bee').setView([38.50, -98.35], 3);
 		var markers = new L.MarkerClusterGroup();
 
-		$scope.isLoggedIn = function() {
-			console.log("Here");
-			var config = {
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			}
-
-			$http.get('users/auth', config)
-				.success(function(response) {
-					console.log("loggedin");
-					$scope.loggedIn = true;
-				});
-		};
-
-		$scope.$on('$viewContentLoaded', function() {
-		    $scope.isLoggedIn();
-		});
-
 		$scope.searchIllness = function() {
 
 			var config = {
@@ -82,6 +63,7 @@
 			{  
 				geocoder.query(String($scope.locations[i].zipcode), showMap);
 				function showMap(err, data) {
+					console.log(data);
 					var marker = L.circle([data.latlng[0], data.latlng[1]], 500, {
 						color: 'red',
 						fillColor: '#f03',
