@@ -153,6 +153,7 @@
 					$scope.new_zipcode = '';
 					$scope.new_first_name = '';
 					$scope.new_last_name = '';
+					$scope.illnessrecs = {};
 					$http.get('api/getRecs', config)
 						.success(function(response) {
 							$scope.illnessrecs = response.data;
