@@ -25,6 +25,7 @@
 		var markers = new L.MarkerClusterGroup();
 
 		$scope.isLoggedIn = function() {
+			console.log("Here");
 			var config = {
 				headers: {
 					'Content-Type': 'application/json'
@@ -33,6 +34,7 @@
 
 			$http.get('users/auth', config)
 				.success(function(response) {
+					console.log("loggedin");
 					$scope.loggedIn = true;
 				});
 		};
@@ -80,7 +82,6 @@
 			{  
 				geocoder.query(String($scope.locations[i].zipcode), showMap);
 				function showMap(err, data) {
-					console.log(data);
 					var marker = L.circle([data.latlng[0], data.latlng[1]], 500, {
 						color: 'red',
 						fillColor: '#f03',
