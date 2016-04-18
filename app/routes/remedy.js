@@ -66,14 +66,11 @@ module.exports = {
 			if (err) {
 				return res.status(400).send({message: "Remedy Not Found"});
 			} else {
-				curRemedy.upvote = curRemedy.upvote + 1;
-
-				curRemedy.save(function(err, upRem){
-				//Adds the Remedy to the database
+				Remedy.update({ _id:curRemedy.id},{$set:{'upvote': curRemedy.upvote + 1}}, function(err, updateRem) {
 					if (err) {
 						return res.status(400).send({message: "Remedy Not Added"});
 					} else {
-						return res.status(200).send({message: "Remedy Added", data: upRem});
+						return res.status(200).send({message: "Remedy Added", data: updateRem});
 					}
 				});
 			}
