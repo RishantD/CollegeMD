@@ -61,22 +61,13 @@ module.exports = {
 	},
 	upvoteRemedy: function(req, res) {
 		var body = req.body;
-
-		Remedy.find({illness: body.illness.toUpperCase(), cure: body.cure}, function(err, curRemedy) {
+		Remedy.update({ _id:body.rem.id},{$set:{'upvote': (body.rem.upvote + 1)}}, function(err, updateRem) {
+			console.log(updateRemedy);
 			if (err) {
-				return res.status(400).send({message: "Remedy Not Found"});
+				return res.status(400).send({message: "Remedy Not Added"});
 			} else {
-				var cur = curRemedy.upvote + 1;
-				console.log(curRemedy);
-				Remedy.update({ _id:curRemedy.id},{$set:{'upvote': cur}}, function(err, updateRem) {
-					console.log(updateRemedy);
-					if (err) {
-						return res.status(400).send({message: "Remedy Not Added"});
-					} else {
-						return res.status(200).send({message: "Remedy Added", data: updateRem});
-					}
-				});
+				return res.status(200).send({message: "Remedy Added", data: updateRem});
 			}
-		})
+		});
 	}
 };
