@@ -184,7 +184,7 @@
 				}
 			}
 
-			$http.post('api/Remedy/add', {illness: $scope.remedy_illness, cure: $scope.remedy_to_add}, config)
+			$http.post('api/Remedy/add', {cure: $scope.remedy_to_add, illness: $scope.remedy_illness}, config)
 				.success(function(response) {
 					alert("Illness Found! Remedy added");
 				})
