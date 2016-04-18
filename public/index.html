@@ -66,8 +66,10 @@
       <div class="panel-body">
         <div class="row" ng-repeat="(key, sym) in remedies">
           <p class="col-md-8">{{sym.cure}}</p>
-          <div class="col-md-4">
-            <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+          <div class="col-md-3">
+            <span class="glyphicon glyphicon-triangle-top" aria-hidden="true" ng-click="upVote(sym.cure)"></span>
+          </div>
+          <div class="col-md-1">
             <p>{{sym.upvote}}</p>
           </div>
         </div>
