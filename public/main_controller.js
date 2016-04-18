@@ -38,6 +38,7 @@
 			$http.post('api/Illness/get', {name: $scope.illness}, config).then(function(response) {
 				$scope.view_illness = response.data.data;
 				$scope.getLocations(response.data.data);
+				console.log(response.data.data.name);
 				$scope.getRemedies(response.data.data.name);
 			});
 
@@ -215,9 +216,9 @@
 					}
 				}
 
-			$http.post('api/Remedy/upvote', {illness: $scope.view_illness, cure: cure}, config)
+			$http.post('api/Remedy/upvote', {illness: $scope.view_illness.name, cure: cure}, config)
 				.success(function(response) {
-					$scope.getRemedies($scope.view_illness);
+					$scope.getRemedies($scope.view_illness.name);
 				})
 				.error(function(response) {
 					alert("Your vote did not go through. Oops.");
