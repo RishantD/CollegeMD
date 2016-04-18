@@ -6,14 +6,13 @@ module.exports = {
 		var body = req.body;
 
 		//Find the Illness to match to the Remedy
-		Illness.find({name: body.illness}, function(err, illness) {
+		Illness.findOne({name: body.illness}, function(err, illness) {
 			if (err) {
 				return res.status(400).send({message: "There is no Illness associated with this", data: []});
 			} else {
 				var newRemedy = new Remedy({
 					createdAt: body.timestamp,
 					illness: body.illness.toUpperCase(),
-					name: body.name.toUpperCase(),
 					cure: body.cure.toUpperCase()
 				});
 
