@@ -19,6 +19,8 @@
 		$scope.locations = '';
 		$scope.illnessrecs = {};
 		$scope.loggedIn = false;
+		$scope.remedy_illness = '';
+		$scope.remedy_to_add = '';
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicmlzaGFudGQiLCJhIjoiY2ltemxpYXp2MDR3Z3drbHVoOHZ0Z2NuYSJ9.Z1Dq85YdC-PRd1WqZUi7sA';
 		var geocoder = L.mapbox.geocoder('mapbox.places'), map = L.mapbox.map('map', 'rishantd.lbc55bee').setView([38.50, -98.35], 3);
@@ -35,6 +37,7 @@
 			$http.post('api/Illness/get', {name: $scope.illness}, config).then(function(response) {
 				$scope.view_illness = response.data.data;
 				$scope.getLocations(response.data.data);
+				$scope.getRemedies(response.data.data);
 			});
 
 		};
@@ -172,6 +175,22 @@
 			$http.delete('users/auth').success(function(response) {
 				$scope.loggedIn = false;
 			});
+		};
+
+		$scope.addRemedy = function() {
+			var config = {
+				headers: {
+					'Content-Type':'application/json'
+				}
+			}
+
+			$http.post('api/Remedy/add', {illness: $scope.remedy_illness, cure: $scope.remedy_to_add}, config)
+				.success(function(response) {
+					alert("Illness Found! Remedy added");
+				})
+				.error(function(response) {
+					alert("There was an error. Please check your typing");
+				});
 		};
 
 		$("#displayAddR").click(function() {

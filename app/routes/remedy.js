@@ -13,7 +13,6 @@ module.exports = {
 				var newRemedy = new Remedy({
 					createdAt: body.timestamp,
 					illness: body.illness.toUpperCase(),
-					name: body.name.toUpperCase(),
 					cure: body.cure.toUpperCase()
 				});
 
