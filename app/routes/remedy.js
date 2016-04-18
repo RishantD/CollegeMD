@@ -67,7 +67,9 @@ module.exports = {
 				return res.status(400).send({message: "Remedy Not Found"});
 			} else {
 				var cur = curRemedy.upvote + 1;
+				console.log(curRemedy);
 				Remedy.update({ _id:curRemedy.id},{$set:{'upvote': cur}}, function(err, updateRem) {
+					console.log(updateRemedy);
 					if (err) {
 						return res.status(400).send({message: "Remedy Not Added"});
 					} else {
