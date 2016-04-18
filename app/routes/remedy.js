@@ -26,7 +26,7 @@ module.exports = {
 						}
 					});
 				} else {
-					return res.status(400).send({message: "There is no Illness associated with this", data: []});
+					return res.status(400).send({message: "There is no Illness associated with this", data: illness});
 				}
 			}
 		});
