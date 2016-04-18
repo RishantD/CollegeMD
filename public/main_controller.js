@@ -202,7 +202,7 @@
 					}
 				}
 
-				$http.post('api/Remedy/get', {name: illness.name}, config).then(function(response) {
+				$http.post('api/Remedy/get', {illness: illness.name}, config).then(function(response) {
 					console.log(response.data.data);
 					$scope.remedies = response.data.data;
 				});

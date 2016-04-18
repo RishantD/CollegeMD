@@ -40,7 +40,7 @@ module.exports = {
 		//Gets the Remedy for a particular Illness from the database
 		var body = req.body;
 
-		Remedy.find({illness: body.illness}, function(err, remedies) {
+		Remedy.find({illness: body.illness.toUpperCase()}, function(err, remedies) {
 			if (err) {
 				return res.status(400).send({message: "Remedies Not Found", data: []});
 			} else {
