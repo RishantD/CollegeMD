@@ -58,5 +58,25 @@ module.exports = {
 				return res.status(200).send({message: "Remedy Deleted"});
 			}
 		});
+	},
+	upvoteRemedy: function(req, res) {
+		var body = req.body;
+
+		Remedy.find({illness: body.illness.toUpperCase(), cure: body.cure}, function(err, curRemedy) {
+			if (err) {
+				return res.status(400).send({message: "Remedy Not Found"});
+			} else {
+				curRemedy.upvote = curRemedy.upvote + 1;
+
+				curRemedy.save(function(err, upRem){
+				//Adds the Remedy to the database
+					if (err) {
+						return res.status(400).send({message: "Remedy Not Added"});
+					} else {
+						return res.status(200).send({message: "Remedy Added", data: upRem});
+					}
+				});
+			}
+		})
 	}
 };
