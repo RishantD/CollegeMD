@@ -38,7 +38,9 @@
 			$http.post('api/Illness/get', {name: $scope.illness}, config).then(function(response) {
 				$scope.view_illness = response.data.data;
 				$scope.getLocations(response.data.data);
-				$scope.getRemedies(response.data.data.name);
+				if (response.data.data.hasOwnProperty('name')) {
+					$scope.getRemedies(response.data.data.name);
+				}
 			});
 
 		};
@@ -195,18 +197,15 @@
 
 		$scope.getRemedies = function(illness) {
 
-			if (illness.hasOwnProperty('name')) {
-				var config = {
-					headers: {
-						'Content-Type': 'application/json'
-					}
+			var config = {
+				headers: {
+					'Content-Type': 'application/json'
 				}
-
-				$http.post('api/Remedy/get', {illness: illness}, config).then(function(response) {
-					console.log(response.data.data);
-					$scope.remedies = response.data.data;
-				});
 			}
+
+			$http.post('api/Remedy/get', {illness: illness}, config).then(function(response) {
+				$scope.remedies = response.data.data;
+			});
 		};
 
 		$scope.upVote = function(cure) {
@@ -223,7 +222,7 @@
 				.error(function(response) {
 					alert("Your vote did not go through. Oops.");
 				});
-		}
+		};
 
 		$("#displayAddR").click(function() {
 			$("#addR").toggle();
