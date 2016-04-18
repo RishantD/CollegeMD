@@ -10,20 +10,24 @@ module.exports = {
 			if (err) {
 				return res.status(400).send({message: "There is no Illness associated with this", data: []});
 			} else {
-				var newRemedy = new Remedy({
-					createdAt: body.timestamp,
-					illness: body.illness.toUpperCase(),
-					cure: body.cure.toUpperCase()
-				});
+				if (illness != null) {
+					var newRemedy = new Remedy({
+						createdAt: body.timestamp,
+						illness: body.illness.toUpperCase(),
+						cure: body.cure.toUpperCase()
+					});
 
-				newRemedy.save(function(err, newRem){
-				//Adds the Remedy to the database
-					if (err) {
-						return res.status(400).send({message: "Remedy Not Added"});
-					} else {
-						return res.status(200).send({message: "Remedy Added", data: newRem});
-					}
-				});
+					newRemedy.save(function(err, newRem){
+					//Adds the Remedy to the database
+						if (err) {
+							return res.status(400).send({message: "Remedy Not Added"});
+						} else {
+							return res.status(200).send({message: "Remedy Added", data: newRem});
+						}
+					});
+				} else {
+					return res.status(400).send({message: "There is no Illness associated with this", data: []});
+				}
 			}
 		});
 	},
