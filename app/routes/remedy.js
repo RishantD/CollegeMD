@@ -10,6 +10,7 @@ module.exports = {
 			if (err) {
 				return res.status(400).send({message: "There is no Illness associated with this", data: []});
 			} else {
+				console.log(illness)
 				if (illness != null) {
 					var newRemedy = new Remedy({
 						createdAt: body.timestamp,
@@ -26,7 +27,7 @@ module.exports = {
 						}
 					});
 				} else {
-					return res.status(400).send({message: "There is no Illness associated with this", data: illness});
+					return res.status(400).send({message: "There is no Illness associated with this", data: []});
 				}
 			}
 		});

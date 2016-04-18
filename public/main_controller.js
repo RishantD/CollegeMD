@@ -189,7 +189,6 @@
 					alert("Illness Found! Remedy added");
 				})
 				.error(function(response) {
-					console.log(response.data.data);
 					alert("There was an error. Please check your typing");
 				});
 		};
