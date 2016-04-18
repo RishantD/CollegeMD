@@ -61,7 +61,7 @@ module.exports = {
 	},
 	upvoteRemedy: function(req, res) {
 		var body = req.body;
-		Remedy.update({ _id:body.rem.id},{$set:{'upvote': (body.rem.upvote + 1)}}, function(err, updateRem) {
+		Remedy.update({illness: body.rem.illness, cure: body.rem.cure},{$set:{'upvote': (body.rem.upvote + 1)}}, function(err, updateRem) {
 			console.log(updateRem);
 			if (err) {
 				return res.status(400).send({message: "Remedy Not Added"});

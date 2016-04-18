@@ -217,7 +217,6 @@
 
 			$http.post('api/Remedy/upvote', {illness: $scope.view_illness.name, rem: remed}, config)
 				.success(function(response) {
-					console.log(response.data);
 					alert("Thanks for your vote!");
 					$scope.getRemedies($scope.view_illness.name);
 				})
