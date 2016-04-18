@@ -136,7 +136,12 @@
           <div>
       	  	<h4>Add a Remedy:</h4>
       	  </div>
-      	  <input style = "width:20%" placeholder="Insert Remedy" /> <button type="button" class="btn btn-success btn-sm">Submit</button>
+          <input ng-model="remedy_illness" style = "width:20%" placeholder="Illness You Have a Cure For" />
+          <br>
+          <br>
+      	  <textarea ng-model="remedy_to_add" style = "width:20%;height:100px;resize:none" placeholder="Insert Remedy"></textarea> 
+          <br>
+          <button type="button" class="btn btn-success btn-sm">Submit</button>
     </div>
 
     <div id = "removeI" style = "display: none">
