@@ -38,7 +38,6 @@
 			$http.post('api/Illness/get', {name: $scope.illness}, config).then(function(response) {
 				$scope.view_illness = response.data.data;
 				$scope.getLocations(response.data.data);
-				console.log(response.data.data.name);
 				$scope.getRemedies(response.data.data.name);
 			});
 
@@ -204,6 +203,7 @@
 				}
 
 				$http.post('api/Remedy/get', {illness: illness}, config).then(function(response) {
+					console.log(response.data.data);
 					$scope.remedies = response.data.data;
 				});
 			}
