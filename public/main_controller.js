@@ -209,6 +209,7 @@
 		};
 
 		$scope.upVote = function(cure) {
+			alert(cure);
 			var config = {
 					headers: {
 						'Content-Type': 'application/json'
