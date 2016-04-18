@@ -20,7 +20,7 @@ module.exports = function(app, passport){
 
 	app.post('/api/Remedy/add', middleware.auth.isLoggedIn, Remedy.addRemedy),
 	app.post('/api/Remedy/get', middleware.auth.isLoggedIn, Remedy.getAllRemedies),
-	app.post('/api/Remedy/upvote', middleware.auth.isLoggedIn, Remedy.getAllRemedies),
+	app.post('/api/Remedy/upvote', middleware.auth.isLoggedIn, Remedy.upvoteRemedies),
 
 	app.get('/api/getRecs', middleware.auth.isLoggedIn, Illness.getRelatedIllness)
 
