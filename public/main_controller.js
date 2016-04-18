@@ -38,9 +38,7 @@
 			$http.post('api/Illness/get', {name: $scope.illness}, config).then(function(response) {
 				$scope.view_illness = response.data.data;
 				$scope.getLocations(response.data.data);
-				if (response.data.data.hasOwnProperty('name')) {
-					$scope.getRemedies(response.data.data.name);
-				}
+				$scope.getRemedies(response.data.data.name);
 			});
 
 		};
