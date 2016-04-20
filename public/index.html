@@ -105,27 +105,34 @@
   	</div> -->
 
     <!-- Dropdown button menu for Adding Illness/Remedy -->
-    <div class="btn-group">
-      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Add <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a id = "displayAddR">Illness</a></li>
-        <li><a id = "displayAddI">Remedy</a></li>
-      </ul>
+    <div class="panel panel-default" style = "position: absolute; width:40%; left: 50%; top: 55%">
+      <div class="panel-body">
+        <div class="btn-group">
+          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Add <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a id = "displayAddR">Illness</a></li>
+            <li><a id = "displayAddI">Remedy</a></li>
+          </ul>
+        </div>
+
+           <!-- Dropdown button menu for editing existing stuff -->
+        <div class="btn-group">
+         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Update <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a id = "displayUpdate">Existing Illness</a></li>
+            <li><a id = "displayRemoveI">Remove Illness</a></li>
+            <li><a id = "displayRemoveR">Remove Remedy</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <!-- Dropdown button menu for editing existing stuff -->
-    <div class="btn-group">
-     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Update <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a id = "displayUpdate">Existing Illness</a></li>
-        <li><a id = "displayRemoveI">Remove Illness</a></li>
-        <li><a id = "displayRemoveR">Remove Remedy</a></li>
-      </ul>
-    </div>
+
+   
 
 
     <!--     <div style = "visibility:hidden"> -->
