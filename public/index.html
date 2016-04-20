@@ -41,9 +41,9 @@
          <h4 ng-show="view_illness != ''">Description:</h4>
          <p><span ng-bind="view_illness.description"></span></p>
          <h4 ng-show="view_illness != ''">Symptoms:</h4>
-         <div ng-repeat="(key, sym) in view_illness.symptoms">
-          <p style="margin-left: 10px;"><span ng-bind="sym"></span></p>
-         </div>
+         <ul ng-repeat="(key, sym) in view_illness.symptoms">
+            <li>{{sym}}</li>
+         </ul>
   	  </div>
   	</div>
 
