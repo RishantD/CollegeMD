@@ -47,7 +47,7 @@ module.exports = {
 					createdAt: body.timestamp 
 				});
 				newSearch.save(function(err, newSearch){
-					//Adds the search to the database
+					//Adds the search to the search collection in the database
 					if (err) {
 						return res.status(400).send({message: "Search Not Added"});
 					} else {
