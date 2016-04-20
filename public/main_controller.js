@@ -34,22 +34,22 @@
 				alert("Please Log In to Use this Feature.");
 			} else {
 				var config = {
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			}
-
-			$http.post('api/Illness/get', {name: $scope.illness}, config)
-				.success(function(response) {
-					$scope.view_illness = response.data.data;
-					$scope.getLocations(response.data.data);
-					if (response.data.data.hasOwnProperty('name')) {
-						$scope.getRemedies(response.data.data.name);
+					headers: {
+						'Content-Type': 'application/json'
 					}
-				})
-				.error(function(response) {
-					alert("Sorry, this illness doesn't exist in the database. Click 'add' to include it.");
-				});
+				}
+
+				$http.post('api/Illness/get', {name: $scope.illness}, config)
+					.success(function(response) {
+						$scope.view_illness = response.data.data;
+						$scope.getLocations(response.data.data);
+						if (response.data.data.hasOwnProperty('name')) {
+							$scope.getRemedies(response.data.data.name);
+						}
+					})
+					.error(function(response) {
+						alert("Sorry, this illness doesn't exist in the database.");
+					});
 			}
 		};
 
