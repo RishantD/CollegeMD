@@ -88,7 +88,7 @@
 			}
 			var symptoms = [];
 			symptoms.push($scope.new_symptoms);
-			$http.post('api/Illness/create', {name: $scope.new_illness, symptoms: symptoms}, config).then(function(response) {
+			$http.post('api/Illness/create', {name: $scope.new_illness, description: "Its a disease", symptoms: symptoms}, config).then(function(response) {
 				$scope.new_illness = '';
 				$scope.new_symptoms = '';
 			});
