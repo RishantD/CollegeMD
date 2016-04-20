@@ -1,4 +1,5 @@
 (function() {
+
 	var app = angular.module('collegemd');
 	app.controller('main_controller', ['$scope', '$http', '$timeout', '$window', function($scope, $http, $timeout, $window) {
 		
@@ -29,20 +30,27 @@
 
 		$scope.searchIllness = function() {
 
-			var config = {
-				headers: {
-					'Content-Type': 'application/json'
+			if(!$scope.loggedIn) {
+				alert("Please Log In to Use this Feature.");
+			} else {
+				var config = {
+					headers: {
+						'Content-Type': 'application/json'
+					}
 				}
+
+				$http.post('api/Illness/get', {name: $scope.illness}, config)
+					.success(function(response) {
+						$scope.view_illness = response.data.data;
+						$scope.getLocations(response.data.data);
+						if (response.data.data.hasOwnProperty('name')) {
+							$scope.getRemedies(response.data.data.name);
+						}
+					})
+					.error(function(response) {
+						alert("Sorry, this illness doesn't exist in the database.");
+					});
 			}
-
-			$http.post('api/Illness/get', {name: $scope.illness}, config).then(function(response) {
-				$scope.view_illness = response.data.data;
-				$scope.getLocations(response.data.data);
-				if (response.data.data.hasOwnProperty('name')) {
-					$scope.getRemedies(response.data.data.name);
-				}
-			});
-
 		};
 
 		$scope.getLocations = function(illness) {
@@ -81,47 +89,63 @@
 		}
 
 		$scope.addIllness = function() {
-			var config = {
-				headers: {
-					'Content-Type': 'application/json'
+
+			if(!$scope.loggedIn) {
+				alert("Please Log In to Use this Feature.");
+			} else {
+				var config = {
+					headers: {
+						'Content-Type': 'application/json'
+					}
 				}
+				var symptoms = [];
+				symptoms.push($scope.new_symptoms);
+				$http.post('api/Illness/create', {name: $scope.new_illness, description: "Its a disease", symptoms: symptoms}, config).then(function(response) {
+					$scope.new_illness = '';
+					$scope.new_symptoms = '';
+				});
 			}
-			var symptoms = [];
-			symptoms.push($scope.new_symptoms);
-			$http.post('api/Illness/create', {name: $scope.new_illness, description: "Its a disease", symptoms: symptoms}, config).then(function(response) {
-				$scope.new_illness = '';
-				$scope.new_symptoms = '';
-			});
 		};
 
 		$scope.deleteIllness = function() {
-			var config = {
-				headers: {
-					'Content-Type': 'application/json'
+			if(!$scope.loggedIn) {
+				alert("Please Log In to Use this Feature.");
+			} else {
+				var config = {
+					headers: {
+						'Content-Type': 'application/json'
+					}
 				}
-			}
 
-			$http.post('api/Illness/delete', {name: $scope.delete_illness}, config).then(function(response) {
-				$scope.delete_illness = '';
-			});
+				$http.post('api/Illness/delete', {name: $scope.delete_illness}, config)
+					.success(function(response) {
+						$scope.delete_illness = '';
+					})
+					.error(function(response) {
+						alert("Sorry, there was an error deleting this illness. Does it exist in the database?");
+					});
+			}
 		};
 
 		$scope.updateIllness = function() {
 			
-			var config = {
-				headers: {
-					'Content-Type': 'application/json'
+			if(!$scope.loggedIn) {
+				alert("Please Log In to Use this Feature.");
+			} else {
+				var config = {
+					headers: {
+						'Content-Type': 'application/json'
+					}
 				}
+
+				var symp = [];
+				symp.push($scope.update_symptoms);
+
+				$http.post('api/Illness/update', {name: $scope.illness_update_symptoms, symptoms: symp}, config).then(function(response) {
+					$scope.illness_update_symptoms = '';
+					$scope.update_symptoms = '';
+				});
 			}
-
-			var symp = [];
-			symp.push($scope.update_symptoms);
-
-			$http.post('api/Illness/update', {name: $scope.illness_update_symptoms, symptoms: symp}, config).then(function(response) {
-				$scope.illness_update_symptoms = '';
-				$scope.update_symptoms = '';
-			});
-
 		};
 
 		$scope.makeAccount = function() {
@@ -180,19 +204,23 @@
 		};
 
 		$scope.addRemedy = function() {
-			var config = {
-				headers: {
-					'Content-Type':'application/json'
+			if(!$scope.loggedIn) {
+				alert("Please Log In to use this Feature.");
+			} else {
+				var config = {
+					headers: {
+						'Content-Type':'application/json'
+					}
 				}
-			}
 
-			$http.post('api/Remedy/add', {cure: $scope.remedy_to_add, illness: $scope.remedy_illness}, config)
-				.success(function(response) {
-					alert("Illness Found! Remedy added");
-				})
-				.error(function(response) {
-					alert("There was an error. Please check your typing");
-				});
+				$http.post('api/Remedy/add', {cure: $scope.remedy_to_add, illness: $scope.remedy_illness}, config)
+					.success(function(response) {
+						alert("Illness Found! Remedy added");
+					})
+					.error(function(response) {
+						alert("There was an error. Please check your typing");
+					});
+			}
 		};
 
 		$scope.getRemedies = function(illness) {
@@ -241,4 +269,8 @@
 			$("#update").toggle();
 		});
 	}]);
+
+	// window.onload = function() {
+	// 	alert("Please log in to get started!");
+	// };
 })();
