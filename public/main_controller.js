@@ -270,7 +270,7 @@
 		});
 	}]);
 
-	window.onload = function() {
-		alert("Please log in to get started!");
-	};
+	// window.onload = function() {
+	// 	alert("Please log in to get started!");
+	// };
 })();
