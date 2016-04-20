@@ -23,6 +23,7 @@
 		$scope.remedy_illness = '';
 		$scope.remedy_to_add = '';
 		$scope.remedies = {};
+		$scope.desc = "Its a disease";
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicmlzaGFudGQiLCJhIjoiY2ltemxpYXp2MDR3Z3drbHVoOHZ0Z2NuYSJ9.Z1Dq85YdC-PRd1WqZUi7sA';
 		var geocoder = L.mapbox.geocoder('mapbox.places'), map = L.mapbox.map('map', 'rishantd.lbc55bee').setView([38.50, -98.35], 3);
@@ -96,7 +97,7 @@
 				}
 				var symptoms = [];
 				symptoms.push($scope.new_symptoms);
-				$http.post('api/Illness/create', {name: $scope.new_illness, description: "Its a disease", symptoms: symptoms}, config).then(function(response) {
+				$http.post('api/Illness/create', {name: $scope.new_illness, description: $scope.desc, symptoms: symptoms}, config).then(function(response) {
 					$scope.new_illness = '';
 					$scope.new_symptoms = '';
 				});
