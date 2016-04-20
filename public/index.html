@@ -38,7 +38,7 @@
   		<input ng-model="illness" style = "width:80%" placeholder="Search by Illness" />
     		<button ng-click="searchIllness()" button type="button" class="btn btn-primary btn-sm">Search</button>
     	   <h1><span ng-bind="view_illness.name"></span></h1>
-         <h3>Description</h3>
+         <h5 ng-show="view_illness != ''">Description</h5>
          <p><span ng-bind="view_illness.description"></span></p>
          <h5 ng-show="view_illness != ''">Symptoms:</h5>
          <div ng-repeat="(key, sym) in view_illness.symptoms">
@@ -46,20 +46,6 @@
          </div>
   	  </div>
   	</div>
-
-    <div class="panel panel-default" style = "width:40%" ng-show="illnessrecs.length > 0">
-      <div class="panel-heading">
-        <h3 class="panel-title">Recommendations:</h3>
-      </div>
-      <div class="panel-body">
-        <div class="recommendations">
-          <h5>People in your area are also searching for:</h5>
-          <div ng-repeat="(key,recs) in illnessrecs">
-            <h6>{{key + 1}}. {{recs[0]}}</h6>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="panel panel-default" style = "width: 40%" ng-show="remedies.length > 0">
       <div class="panel-heading">
@@ -73,6 +59,20 @@
           </div>
           <div class="col-md-1">
             <p>{{sym.upvote}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default" style = "width:40%" ng-show="illnessrecs.length > 0">
+      <div class="panel-heading">
+        <h3 class="panel-title">Recommendations:</h3>
+      </div>
+      <div class="panel-body">
+        <div class="recommendations">
+          <h5>People in your area are also searching for:</h5>
+          <div ng-repeat="(key,recs) in illnessrecs">
+            <h6>{{key + 1}}. {{recs[0]}}</h6>
           </div>
         </div>
       </div>
