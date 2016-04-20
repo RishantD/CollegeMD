@@ -39,17 +39,13 @@
 					}
 				}
 
-				$http.post('api/Illness/get', {name: $scope.illness}, config)
-					.success(function(response) {
+				$http.post('api/Illness/get', {name: $scope.illness}, config).then(function(response) {
 						$scope.view_illness = response.data.data;
 						$scope.getLocations(response.data.data);
 						if (response.data.data.hasOwnProperty('name')) {
 							$scope.getRemedies(response.data.data.name);
 						}
 					})
-					.error(function(response) {
-						alert("Sorry, this illness doesn't exist in the database.");
-					});
 			}
 		};
 
@@ -216,6 +212,8 @@
 				$http.post('api/Remedy/add', {cure: $scope.remedy_to_add, illness: $scope.remedy_illness}, config)
 					.success(function(response) {
 						alert("Illness Found! Remedy added");
+						$scope.remedy_to_add = '';
+						$scope.remedy_illness = '';
 					})
 					.error(function(response) {
 						alert("There was an error. Please check your typing");
