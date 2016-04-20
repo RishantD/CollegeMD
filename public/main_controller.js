@@ -100,7 +100,7 @@
 				}
 				var symptoms = [];
 				symptoms.push($scope.new_symptoms);
-				$http.post('api/Illness/create', {name: $scope.new_illness, symptoms: symptoms}, config).then(function(response) {
+				$http.post('api/Illness/create', {name: $scope.new_illness, description: "Its a disease", symptoms: symptoms}, config).then(function(response) {
 					$scope.new_illness = '';
 					$scope.new_symptoms = '';
 				});
@@ -236,15 +236,14 @@
 			});
 		};
 
-		$scope.upVote = function(cure) {
-			alert(cure);
+		$scope.upVote = function(remed) {
 			var config = {
 					headers: {
 						'Content-Type': 'application/json'
 					}
 				}
 
-			$http.post('api/Remedy/upvote', {illness: $scope.view_illness.name, cure: cure}, config)
+			$http.post('api/Remedy/upvote', {illness: $scope.view_illness.name, rem: remed}, config)
 				.success(function(response) {
 					alert("Thanks for your vote!");
 					$scope.getRemedies($scope.view_illness.name);

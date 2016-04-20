@@ -7,6 +7,7 @@ module.exports = {
 
 		var newIllness = new Illness({
 			name: body.name.toUpperCase(),
+			description: body.description,
 			symptoms: body.symptoms,
 			createdAt: body.timestamp 
 		});
@@ -112,7 +113,6 @@ module.exports = {
 			if (err) {
 				return res.status(400).send({message: "No illnesses searched in area"});
 			} else {
-				console.log("Hello")
 				var filterArray = {};
 				for(i in results) {
 					if (isNaN(filterArray[results[i].illnessName])) {
@@ -122,8 +122,6 @@ module.exports = {
 						filterArray[results[i].illnessName] += 1; 
 					}
 				}
-
-				console.log(filterArray);
 
 				var items = Object.keys(filterArray).map(function(key) {
 				    return [key, filterArray[key]];
