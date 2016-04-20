@@ -218,7 +218,7 @@
 					.error(function(response) {
 						alert("There was an error. Please check your typing");
 					});
-
+			}
 		};
 
 		$scope.getRemedies = function(illness) {
