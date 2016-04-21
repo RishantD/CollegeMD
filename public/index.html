@@ -112,7 +112,7 @@
             Add <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a id = "displayAddR">Illness</a></li>
+            <!-- <li><a id = "displayAddR">Illness</a></li> -->
             <li><a id = "displayAddI">Remedy</a></li>
           </ul>
         </div>
@@ -125,7 +125,7 @@
           <ul class="dropdown-menu">
             <li><a id = "displayUpdate">Existing Illness</a></li>
             <li><a id = "displayRemoveI">Remove Illness</a></li>
-            <li><a id = "displayRemoveR">Remove Remedy</a></li>
+            <!-- <li><a id = "displayRemoveR">Remove Remedy</a></li> -->
           </ul>
         </div>
       </div>
@@ -136,49 +136,71 @@
 
 
     <!--     <div style = "visibility:hidden"> -->
-    <div id = "addR" style = "display: none">
+    <!-- 
+    <div class="panel panel-default"  id = "addR" style = "display: none; position: absolute; width:40%; left: 50%; top: 65%">
+      <div class="panel-body">
         <div>
-        	<h4>Add an Illness:</h4>
+            <div>
+            	<h4>Add an Illness:</h4>
+            </div>
+            <input ng-model="new_illness" style = "width:20%" placeholder="Insert Illness" />
+            <input ng-model="new_symptoms" style = "width:20%" placeholder="Insert Symptoms for Illness" /> <button type="button" class="btn btn-success btn-sm" ng-click="addIllness()">Submit</button>
         </div>
-        <input ng-model="new_illness" style = "width:20%" placeholder="Insert Illness" />
-        <input ng-model="new_symptoms" style = "width:20%" placeholder="Insert Symptoms for Illness" /> <button type="button" class="btn btn-success btn-sm" ng-click="addIllness()">Submit</button>
     </div>
+    </div> -->
+
       <!--   <div ng-view></div>	
         <div style = "display:none"> -->
-    <div id = "addI" style = "display: none">
-          <div>
-      	  	<h4>Add a Remedy:</h4>
-      	  </div>
-          <input ng-model="remedy_illness" style = "width:20%" placeholder="Illness You Have a Cure For" />
-          <br>
-          <br>
-      	  <textarea ng-model="remedy_to_add" style = "width:20%;height:100px;resize:none" placeholder="Insert Remedy"></textarea> 
-          <br>
-          <button type="button" class="btn btn-success btn-sm" ng-click="addRemedy()">Submit</button>
+    <div class="panel panel-default"  id = "addI" style = "display: none; position: absolute; width:40%; left: 50%; top: 65%">
+      <div class="panel-body">
+      
+            <div>
+        	  	<h4>Add a Remedy:</h4>
+        	  </div>
+            <input ng-model="remedy_illness" style = "width:80%" placeholder="Illness You Have a Cure For" />
+            <br>
+            <br>
+        	  <textarea ng-model="remedy_to_add" style = "width:80%;height:100px;resize:none" placeholder="Insert Remedy"></textarea> 
+            <br>
+            <button type="button" class="btn btn-success btn-sm" ng-click="addRemedy()">Submit</button>
+        
+      </div>
     </div>
-
-    <div id = "removeI" style = "display: none">
-      	  <div>
-      	  	<h4>Illness to remove:</h4>
-      	  </div>
-      	  <input ng-model="delete_illness" style = "width:20%" placeholder="Remove this Illness" /> <button type="button" class="btn btn-danger btn-sm" ng-click="deleteIllness()">Remove</button>
-    </div>
-
-    <div id = "removeR" style = "display: none">
-      	  <div>
-      	  	<h4>Remedy to remove:</h4>
-      	  </div>
-      	  <input style = "width:20%" placeholder="Remove this Remedy" /> <button type="button" class="btn btn-danger btn-sm">Remove</button>
-    </div>
-    <div id = "update" style = "display: none">
-          <div>
-            <h4>Update Illness Symptoms:</h4>
-          </div>
-          <input ng-model="illness_update_symptoms" style = "width:20%" placeholder="Illness you want to update" />
-          <input ng-model="update_symptoms" style = "width:20%" placeholder="Type updated symptoms here" /> <button type="button" class="btn btn-warning btn-sm" ng-click="updateIllness()">Update</button>
-    </div>
+     <div class="panel panel-default"  id = "removeI" style = "display: none; position: absolute; width:40%; left: 50%; top: 65%">
+      <div class="panel-body">
         <div>
+          	  <div>
+          	  	<h4>Illness to remove:</h4>
+          	  </div>
+          	  <input ng-model="delete_illness" style = "width:80%" placeholder="Remove this Illness" /> <button type="button" class="btn btn-danger btn-sm" ng-click="deleteIllness()">Remove</button>
         </div>
+      </div>
+    </div>
+
+     <div class="panel panel-default"  id = "removeR" style = "display: none; position: absolute; width:40%; left: 50%; top: 65%">
+      <div class="panel-body">
+          <div>
+            	  <div>
+            	  	<h4>Remedy to remove:</h4>
+            	  </div>
+            	  <input style = "width:80%" placeholder="Remove this Remedy" /> <button type="button" class="btn btn-danger btn-sm">Remove</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default"  id = "update" style = "display: none; position: absolute; width:40%; left: 50%; top: 65%">
+        <div class="panel-body">      
+          <div>
+                <div>
+                  <h4>Update Illness Symptoms:</h4>
+                </div>
+                <input ng-model="illness_update_symptoms" style = "width:40%" placeholder="Illness you want to update" />
+                <input ng-model="update_symptoms" style = "width:40%" placeholder="Type updated symptoms here" /> <button type="button" class="btn btn-warning btn-sm" ng-click="updateIllness()">Update</button>
+          </div>
+        </div>
+      </div>
+    <div>
+  </div>
     <!--   </div> -->
 <button style = "position: absolute; top: 2%; left: 78%;" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-show="!loggedIn">
   Log In/Sign Up
